@@ -1,3 +1,5 @@
+import { Routes, Route } from "react-router-dom";
+
 import { Home } from "./components/Home/Home";
 import { Footer } from "./components/common/Footer/Footer";
 import { Header } from "./components/common/Header";
@@ -11,9 +13,14 @@ function App() {
   return (
     <div id="wrapper">
       <Header />
-
-
-
+          <Routes>
+              <Route path="/" element={<Home />}/>
+              <Route path="/dashboard" element={<Dashboard />}/>
+              <Route path="/register" element={<Register />}/>
+              <Route path="/login" element={<Login />}/>
+              <Route path="/edit/:id" element={<Edit />}/>
+              <Route path="/details/:id" element={<Details />}/> 
+          </Routes>
       <Footer />
     </div>
   )
