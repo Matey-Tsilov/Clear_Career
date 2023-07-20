@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export const Header = () => {
     return (
         <header>
@@ -7,17 +9,17 @@ export const Header = () => {
     </a>
     <nav>
       <div>
-        <a href="#">Dashboard</a>
+        <Link to="/dashboard">Dashboard</Link>
       </div>
       {/* Logged-in users */}
       <div className="user">
-        <a href="#">Create Offer</a>
-        <a href="#">Logout</a>
+        <Link to="/create">Create Offer</Link>
+        <Link to="javascript:void(0)">Logout</Link>
       </div>
       {/* Guest users */}
       <div className="guest">
-        <a href="#">Login</a>
-        <a href="#">Register</a>
+        <Link to="/login">Login</Link>
+        <Link to="/register">Register</Link>
       </div>
     </nav>
   </header>
