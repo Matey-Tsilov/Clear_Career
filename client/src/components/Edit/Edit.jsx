@@ -1,8 +1,10 @@
+import style from "./Edit.module.css"
+
 export const Edit = () => {
     return (<section id="edit">
-    <div className="form">
+    <div className={style.form}>
       <h2>Edit Offer</h2>
-      <form className="edit-form">
+      <form className={style["edit-form"]}>
         <input type="text" name="title" id="job-title" placeholder="Title" />
         <input
           type="text"

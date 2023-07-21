@@ -1,3 +1,5 @@
+import style from './Details.module.css'
+
 export const Details = () => {
     return (<section id="details">
     <div id="details-wrapper">
