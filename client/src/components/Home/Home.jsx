@@ -1,8 +1,10 @@
+import img from '../../assets/png.png'
+
 export const Home = () => {
     return (
         <section id="home">
       <img
-        src="./images/pngkey.com-hunting-png-6697165-removebg-preview.png"
+        src={img}
         alt="home"
       />
       <h2>Searching for a job?</h2>
