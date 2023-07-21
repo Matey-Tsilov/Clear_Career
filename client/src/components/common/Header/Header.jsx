@@ -16,12 +16,12 @@ export const Header = () => {
         <Link to="/dashboard">Dashboard</Link>
       </div>
       {/* Logged-in users */}
-      <div className="user">
+      <div className={style.user}>
         <Link to="/create">Create Offer</Link>
         <Link to="javascript:void(0)">Logout</Link>
       </div>
       {/* Guest users */}
-      <div className="guest">
+      <div className={style.guest}>
         <Link to="/login">Login</Link>
         <Link to="/register">Register</Link>
       </div>

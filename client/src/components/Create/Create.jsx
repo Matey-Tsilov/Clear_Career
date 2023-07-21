@@ -1,8 +1,10 @@
+import style from "./Create.module.css"
+
 export const Create = () => {
     return (<section id="create">
-    <div className="form">
+    <div className={style.form}>
       <h2>Create Offer</h2>
-      <form className="create-form">
+      <form className={style["create-form"]}>
         <input type="text" name="title" id="job-title" placeholder="Title" />
         <input
           type="text"
