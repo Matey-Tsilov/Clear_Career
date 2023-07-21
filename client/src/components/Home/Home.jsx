@@ -1,4 +1,5 @@
 import img from '../../assets/png.png'
+import style from "./Home.module.css"
 
 export const Home = () => {
     return (

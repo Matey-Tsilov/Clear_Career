@@ -1,13 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 
-import { Home } from "./components/Home/Home";
-import { Footer } from "./components/common/Footer";
-import { Header } from "./components/common/Header/Header";
-import { Dashboard } from "./components/Dashboard/Dashboard";
+import { Home } from "./components/Home/Home.jsx";
+import { Footer } from "./components/common/Footer/Footer.jsx";
+import { Header } from "./components/common/Header/Header.jsx";
+import { Dashboard } from "./components/Dashboard/Dashboard.jsx";
 import { Create } from "./components/Create/Create.jsx"
-import { Register } from "./components/Register/Register";
-import { Login } from "./components/Login/Login";
-import { Edit } from "./components/Edit/Edit";
+import { Register } from "./components/Register/Register.jsx";
+import { Login } from "./components/Login/Login.jsx";
+import { Edit } from "./components/Edit/Edit.jsx";
 import { Details } from "./components/Details/Details.jsx"
 
 function App() {

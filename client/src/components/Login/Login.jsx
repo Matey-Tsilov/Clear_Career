@@ -13,7 +13,7 @@ export const Login = () => {
           placeholder="password"
         />
         <button type="submit">login</button>
-        <p className={style.messgae}>
+        <p className={style.message}>
           Not registered? <a href="#">Create an account</a>
         </p>
       </form>
