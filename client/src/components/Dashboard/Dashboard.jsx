@@ -1,12 +1,17 @@
 import style from "./Dashboard.module.css"
 
+import img1 from '../../assets/example1.png'
+import img2 from '../../assets/example2.png'
+import img3 from '../../assets/example3.png'
+
+
 export const Dashboard = () => {
     return (
         <section id="dashboard">
       <h2>Job Offers</h2>
       {/* Display a div with information about every post (if any)*/}
       <div className={style.offer}>
-        <img src="/client/images/example1.png" alt="example1" />
+        <img src={img1} alt="example1" />
         <p>
           <strong>Title: </strong>
           <span className={style.title}>Sales Manager</span>
@@ -20,7 +25,7 @@ export const Dashboard = () => {
         </a>
       </div>
       <div className={style.offer}>
-        <img src="./images/example2.png" alt="example2" />
+        <img src={img2} alt="example2" />
         <p>
           <strong>Title: </strong>
           <span className={style.title}>Senior Frontend Software Engineer</span>
@@ -34,7 +39,7 @@ export const Dashboard = () => {
         </a>
       </div>
       <div className={style.offer}>
-        <img src="./images/example3.png" alt="./images/example3.png" />
+        <img src={img3} alt="./images/example3.png" />
         <p>
           <strong>Title: </strong>
           <span className={style.title}>Invoice Administrator</span>

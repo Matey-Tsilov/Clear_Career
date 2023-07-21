@@ -1,15 +1,12 @@
-import img from '../../assets/png.png'
-import style from "./Home.module.css"
+import img from "../../assets/png.png";
+import style from "./Home.module.css";
 
 export const Home = () => {
-    return (
-        <section id="home">
-      <img
-        src={img}
-        alt="home"
-      />
+  return (
+    <section id={style["home"]}>
+      <img src={img} alt="home" />
       <h2>Searching for a job?</h2>
       <h3>The right place for a new career start!</h3>
     </section>
-    )
-}
+  );
+};

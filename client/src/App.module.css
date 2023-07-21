@@ -1,0 +1,9 @@
+/* Global styles */
+
+body {
+    color: rgb(12 100 120);
+    background: #f3f7f7;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+  }

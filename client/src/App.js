@@ -10,6 +10,8 @@ import { Login } from "./components/Login/Login.jsx";
 import { Edit } from "./components/Edit/Edit.jsx";
 import { Details } from "./components/Details/Details.jsx"
 
+import "./App.module.css"
+
 function App() {
   return (
     <div id="wrapper">
