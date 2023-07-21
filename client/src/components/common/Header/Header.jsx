@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom"
 
+import style from "./Header.module.css"
+import logo from "./logo.jpg"
+
+
 export const Header = () => {
     return (
         <header>
     {/* Navigation */}
     <a id="logo" href="/">
-      <img id="logo-img" src="./images/logo.jpg" alt="" />
+      <img id="logo-img" src={logo} alt="" />
     </a>
     <nav>
       <div>
