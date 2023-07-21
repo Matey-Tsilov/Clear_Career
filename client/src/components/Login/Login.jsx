@@ -1,8 +1,10 @@
+import style from "./Login.module.css"
+
 export const Login = () => {
     return (<section id="login">
-    <div className="form">
+    <div className={style.form}>
       <h2>Login</h2>
-      <form className="login-form">
+      <form className={style["login-form"]}>
         <input type="text" name="email" id="email" placeholder="email" />
         <input
           type="password"
@@ -11,7 +13,7 @@ export const Login = () => {
           placeholder="password"
         />
         <button type="submit">login</button>
-        <p className="message">
+        <p className={style.messgae}>
           Not registered? <a href="#">Create an account</a>
         </p>
       </form>
