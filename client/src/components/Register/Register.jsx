@@ -1,8 +1,10 @@
+import style from "./Register.module.css"
+
 export const Register = () => {
     return (<section id="register">
-    <div className="form">
+    <div className={style.form}>
       <h2>Register</h2>
-      <form className="login-form">
+      <form className={style["login-form"]}>
         <input
           type="text"
           name="email"
@@ -22,7 +24,7 @@ export const Register = () => {
           placeholder="repeat password"
         />
         <button type="submit">register</button>
-        <p className="message">
+        <p className={style.message}>
           Already registered? <a href="#">Login</a>
         </p>
       </form>
