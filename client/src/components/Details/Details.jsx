@@ -1,18 +1,22 @@
 import style from './Details.module.css'
+import img from '../../assets/example1.png'
 
 export const Details = () => {
-    return (<section id="details">
-    <div id="details-wrapper">
-      <img id="details-img" src="./images/example2.png" alt="example1" />
-      <p id="details-title">Senior Frontend Software Engineer</p>
-      <p id="details-category">
-        Category: <span id="categories">IT, Developer, WEB</span>
+
+  
+    return (
+    <section id={style.details}>
+    <div id={style["details-wrapper"]}>
+      <img id={style["details-img"]} src={img} alt="example1" />
+      <p id={style["details-title"]}>Senior Frontend Software Engineer</p>
+      <p id={style["details-category"]}>
+        Category: <span id={style["categories"]}>IT, Developer, WEB</span>
       </p>
-      <p id="details-salary">
-        Salary: <span id="salary-number">7000</span>
+      <p id={style["details-salary"]}>
+        Salary: <span id={style["salary-number"]}>7000</span>
       </p>
-      <div id="info-wrapper">
-        <div id="details-description">
+      <div id={style["info-wrapper"]}>
+        <div id={style["details-description"]}>
           <h4>Description</h4>
           <span>
             We are looking for programmers with a keen eye for design for the
@@ -23,7 +27,7 @@ export const Details = () => {
             pages, among other duties.
           </span>
         </div>
-        <div id="details-requirements">
+        <div id={style["details-requirements"]}>
           <h4>Requirements</h4>
           <span>
             Degree in computer science or related field. Understanding of key
@@ -35,10 +39,10 @@ export const Details = () => {
         </div>
       </div>
       <p>
-        Applications: <strong id="applications">1</strong>
+        Applications: <strong id={style["applications"]}>1</strong>
       </p>
       {/*Edit and Delete are only for creator*/}
-      <div id="action-buttons">
+      <div id={style["action-buttons"]}>
         <a href="" id="edit-btn">
           Edit
         </a>
