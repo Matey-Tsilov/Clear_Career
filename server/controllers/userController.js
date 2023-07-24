@@ -25,7 +25,7 @@ router.post("/register", async (req, res) => {
   }
 });
 router.get('/logout', (req, res) => {
-    //token will be blacklisted! And ehan logged in will be изваден!
+    //token will be blacklisted!
     userService.logout(req.user.token)
     res.status(204).end()
 })
