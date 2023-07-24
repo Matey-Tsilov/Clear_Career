@@ -24,4 +24,5 @@ async function start() {
     //initial message
     server.listen(PORT, () => console.log(`App is listening on port ${PORT}`))
 }
+
 start()
