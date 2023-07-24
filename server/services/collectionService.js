@@ -1,8 +1,8 @@
-const Collection = require('../models/CollectonModel')
+const OffersCollection = require('../models/OffersModel')
 
-exports.getAll = () => Collection.find({})
-exports.getById = (id) => Collection.findById(id)
-exports.create = (recordData) => Collection.create(recordData)
-exports.updateById = (id, updatedItem) => Collection.findByIdAndUpdate(id, updatedItem) 
-exports.deleteById = (id) => Collection.findByIdAndDelete(id) 
+exports.getAll = () => OffersCollection.find({})
+exports.getById = (id) => OffersCollection.findById(id)
+exports.create = (recordData) => OffersCollection.create(recordData)
+exports.updateById = (id, updatedItem) => OffersCollection.findByIdAndUpdate(id, updatedItem) 
+exports.deleteById = (id) => OffersCollection.findByIdAndDelete(id) 
 
