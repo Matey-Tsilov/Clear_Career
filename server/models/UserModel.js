@@ -15,6 +15,12 @@ const userSchema = new mongoose.Schema({
     required: [true, 'The password is required!'],
     minLength: [4, 'The password should be atleast 4 characters long!']
   },
+  workExp: {
+    type: Number,
+    reuired: [true, "How will we find a job, if you don't tell us your experience?"],
+    min: [0, "You are simply too young to start working"],
+    max: [70, "Are you sure, you have worked so many years?"]
+  }
 });
 
 userSchema.pre("save", async function (next) {

@@ -75,9 +75,8 @@ async function login(email, password) {
         email: serverRes.email, 
         password: serverRes.password,
         token: serverRes.accessToken,
-        gender: serverRes.gender,
-        username: serverRes.username,
-        id: serverRes._id
+        id: serverRes._id,
+        workExp: serverRes.workExp
     }
     
     //така ще можем по-лесно да взимаме колко миима е написал, за да визуализираме бройката в userProfile view
@@ -86,17 +85,16 @@ async function login(email, password) {
 
 }
 
-async function register(username, email, password, gender) {
+async function register(email, password, workExp) {
 
-    const serverRes = await post('/users/register', {username, email, password, gender})
+    const serverRes = await post('/users/register', {email, password, workExp})
     
     const userData = {
         email: serverRes.email, 
         password: serverRes.password,
         token: serverRes.accessToken,
-        gender: serverRes.gender,
-        username: serverRes.username,
-        id: serverRes._id
+        id: serverRes._id,
+        workExp: serverRes.workExp
     }
     //така ще можем по-лесно да взимаме колко миима е написал, за да визуализираме бройката в userProfile view
     setUserData(userData)
