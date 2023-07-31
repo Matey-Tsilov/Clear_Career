@@ -6,7 +6,7 @@ export const useLocalStorage = (defaultUser) => {
         const loggedUser = getUserData()
 //единствено заради този ред имаме local/sessionStorage, 
 //просто без него нямаше как да ни преживя информацията за потребиталя през refresh-овете!
-        if (loggedUser?.userData) {
+        if (loggedUser?.email) {
             return loggedUser
         }
         return defaultUser

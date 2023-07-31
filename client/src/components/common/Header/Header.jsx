@@ -31,7 +31,7 @@ export const Header = () => {
         (
           <div className={style.user}>
             <Link to="/create">Create Offer</Link>
-            <Link to="javascript:void(0)">Logout</Link>
+            <a to="javascript:void(0)">Logout</a>
           </div>
         )}
       </nav>
