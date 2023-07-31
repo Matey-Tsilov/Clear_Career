@@ -66,9 +66,10 @@ async function del(url) {
     return request(url, createOptions('delete'))
 }
 
-async function login(email, password) {
+async function login(data) {
 
-    const serverRes = await post('/users/login', {email, password})
+    const serverRes = await post('/users/login', data)
+    console.log(serverRes);
     
     const userData = {
         email: serverRes.email, 
@@ -78,7 +79,7 @@ async function login(email, password) {
         workExp: serverRes.workExp
     }
     
-    return serverRes
+    return userData
 
 }
 
@@ -94,7 +95,7 @@ async function register(data) {
         workExp: serverRes.workExp
     }
 
-    return serverRes
+    return userData
 
 }
 

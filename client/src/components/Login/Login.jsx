@@ -1,22 +1,64 @@
-import style from "./Login.module.css"
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+
+import { login } from "../../services/userService";
+import { UserContext } from "../../contexts/userContext";
+
+import style from "./Login.module.css";
 
 export const Login = () => {
-    return (<section id="login">
-    <div className={style.form}>
-      <h2>Login</h2>
-      <form className={style["login-form"]}>
-        <input type="text" name="email" id="email" placeholder="email" />
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="password"
-        />
-        <button type="submit">login</button>
-        <p className={style.message}>
-          Not registered? <a href="#">Create an account</a>
-        </p>
-      </form>
-    </div>
-  </section>)
-}
+  const { setUser } = useContext(UserContext);
+  const navigate = useNavigate();
+  const [input, setInputs] = useState({
+    email: "",
+    password: "",
+  });
+  const onInputChange = (e) => {
+    const change = { [e.target.name]: e.target.value };
+    setInputs((before) => ({ ...before, ...change }));
+  };
+  const onLoginSubmit = (e) => {
+    e.preventDefault();
+
+    const data = {
+      email: input.email.trim(),
+      password: input.password.trim(),
+    };
+
+    login(data).then((res) => {
+      console.log(res);
+      setUser(res);
+      navigate("/");
+    });
+  };
+
+  return (
+    <section id="login">
+      <div className={style.form}>
+        <h2>Login</h2>
+        <form onSubmit={onLoginSubmit} className={style["login-form"]}>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="Type email here:"
+            onChange={onInputChange}
+            value={input.email}
+          />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Type password here:"
+            onChange={onInputChange}
+            value={input.password}
+          />
+          <button type="submit">login</button>
+          <p className={style.message}>
+            Not registered? <Link to="/register">Create an account</Link>
+          </p>
+        </form>
+      </div>
+    </section>
+  );
+};
