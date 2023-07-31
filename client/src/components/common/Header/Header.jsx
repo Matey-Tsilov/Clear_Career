@@ -7,7 +7,7 @@ import { UserContext } from "../../../contexts/userContext.js";
 import { useContext } from "react";
 
 export const Header = () => {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   return (
     <header>
@@ -31,7 +31,7 @@ export const Header = () => {
         (
           <div className={style.user}>
             <Link to="/create">Create Offer</Link>
-            <a to="javascript:void(0)">Logout</a>
+            <Link onClick={() => setUser()} to="/">Logout</Link>
           </div>
         )}
       </nav>
