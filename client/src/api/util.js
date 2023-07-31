@@ -1,13 +1,13 @@
 function getUserData() {
-    return JSON.parse(sessionStorage.getItem('userData'))
+    return JSON.parse(localStorage.getItem('userData'))
 }
 
 function setUserData(userData) {
-    sessionStorage.setItem('userData', JSON.stringify(userData))
+    localStorage.setItem('userData', JSON.stringify(userData))
 }
 
 function clearUserData() {
-    sessionStorage.removeItem('userData')
+    localStorage.removeItem('userData')
 }
 
 export{
