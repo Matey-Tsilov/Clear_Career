@@ -1,6 +1,6 @@
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
-const { createContext, useState } = require("react");
+const { createContext } = require("react");
 
 export const UserContext = createContext()
 
