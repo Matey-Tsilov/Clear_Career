@@ -6,18 +6,16 @@ router.post("/login", async (req, res) => {
   const {email, password} = req.body;
 
   try {
-    const session = await userService.login(email, password)
-    res.json(session);
+   await userService.login(email, password)
   } catch (error) {
     const errorMsg = mongooseErrorMapper(error);
     res.status(404).json({ message: errorMsg });
   }
 });
 router.post("/register", async (req, res) => {
-  const body = req.body;
-
+  const userData = req.body;
   try {
-    const newUser = await userService.register(body);
+    const newUser = await userService.register(userData);
     res.json(newUser);
   } catch (error) {
     const errorMsg = mongooseErrorMapper(error);

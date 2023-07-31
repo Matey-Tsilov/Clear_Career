@@ -1,4 +1,3 @@
-import { notify } from "../common/notify.js"
 import { getUserData, setUserData, clearUserData } from "./util.js"
 
 const host = "http://localhost:3030"
@@ -28,7 +27,7 @@ async function request(url, options) {
 
     } catch (err) {
         //alert(err.message)
-        notify(err.message)
+        //notify(err.message)
         throw err
     }
     
@@ -79,15 +78,13 @@ async function login(email, password) {
         workExp: serverRes.workExp
     }
     
-    //така ще можем по-лесно да взимаме колко миима е написал, за да визуализираме бройката в userProfile view
-    //работи само при стари версии на сървъра!//await get(`/data/memes?where=_ownerId%3D%22${userData.id}%22&count`)
-    setUserData(userData)
+    return serverRes
 
 }
 
-async function register(email, password, workExp) {
+async function register(data) {
 
-    const serverRes = await post('/users/register', {email, password, workExp})
+    const serverRes = await post('/users/register', data)
     
     const userData = {
         email: serverRes.email, 
@@ -96,8 +93,8 @@ async function register(email, password, workExp) {
         id: serverRes._id,
         workExp: serverRes.workExp
     }
-    //така ще можем по-лесно да взимаме колко миима е написал, за да визуализираме бройката в userProfile view
-    setUserData(userData)
+
+    return serverRes
 
 }
 

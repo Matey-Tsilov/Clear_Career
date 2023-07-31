@@ -31,6 +31,7 @@
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
+  border: 1px solid rgb(17, 122, 124) ;
 }
 .form textarea {
   border: 1px solid rgb(206, 206, 206);

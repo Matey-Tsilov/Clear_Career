@@ -42,6 +42,7 @@ async function generateSession(user) {
   return {
     email: user.email, 
     _id: user._id,
+    workExp: user.workExp,
     accessToken: token
   }
 } 
