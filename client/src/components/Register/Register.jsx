@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-import style from "./Register.module.css";
 import { register } from "../../api/api";
+import style from "./Register.module.css";
+import { UserContext } from "../../contexts/userContext";
 
 export const Register = () => {
   const [inputs, setInputs] = useState({
@@ -11,6 +12,9 @@ export const Register = () => {
     re_password: "",
     workExp: "",
   });
+  const {setUser} = useContext(UserContext)
+  const navigate = useNavigate()
+
   const onInputChange = (e) => {
     const change = { [e.target.name]: e.target.value };
     setInputs((old) => ({ ...old, ...change }));
@@ -28,7 +32,10 @@ export const Register = () => {
       workExp: inputs.workExp.trim(),
     };
 
-     register(send).then()
+     register(send).then(res => {
+         setUser(res)
+         navigate('/')
+     })
 
   };
 
