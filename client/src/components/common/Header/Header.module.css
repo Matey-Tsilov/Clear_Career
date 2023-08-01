@@ -33,3 +33,15 @@ header a {
   padding: 0 10px;
   text-decoration: none;
 }
+
+.welcoming {
+  border: 2px solid #0c6478;
+  border-radius: 6px;
+  padding: 10px 20px 10px 20px;
+  margin-right: 10px;
+}
+
+.welcoming span {
+font-size: 1em;
+color: #2a79be;
+}

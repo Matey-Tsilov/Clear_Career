@@ -1,14 +1,15 @@
 import { Routes, Route } from "react-router-dom";
 
 import { Home } from "./components/Home/Home.jsx";
-import { Footer } from "./components/common/Footer/Footer.jsx";
-import { Header } from "./components/common/Header/Header.jsx";
+import { Footer } from "./components/Common/Footer/Footer.jsx";
+import { Header } from "./components/Common/Header/Header.jsx";
 import { Dashboard } from "./components/Dashboard/Dashboard.jsx";
 import { Create } from "./components/Create/Create.jsx"
 import { Register } from "./components/Register/Register.jsx";
 import { Login } from "./components/Login/Login.jsx";
 import { Edit } from "./components/Edit/Edit.jsx";
 import { Details } from "./components/Details/Details.jsx"
+import { Profile } from "./components/UserProfile/UserProfile.jsx";
 
 import { UserContextProvider } from "./contexts/userContext.js";
 
