@@ -26,7 +26,6 @@ export const Login = () => {
     };
 
     login(data).then((res) => {
-      console.log(res);
       setUser(res);
       navigate("/");
     });
