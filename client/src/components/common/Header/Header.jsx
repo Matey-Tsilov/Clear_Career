@@ -17,7 +17,7 @@ export const Header = () => {
       </a>
       <nav>
         <div>
-          <Link to="/profile" className={style.welcoming}>Welcome, <span>{user.email || "Guest"}</span></Link>
+          <Link to="/profile">Welcome, <span>{user.email || "Guest"}</span></Link>
           <Link to="/dashboard">Dashboard</Link>
         </div>
         {Object.values(user) == 0 

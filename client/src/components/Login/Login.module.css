@@ -88,11 +88,15 @@
 /* Custom classes */
 .errorLabel {
  text-align: left;
- padding: 60px 20px 50px 15px;
+ padding: 0 0 0 15px;
  vertical-align: middle;
  color: red;
 }
 
+form input {
+  border: 1px solid #5c9596;
+  border-radius: 6px;
+}
 .errorInput {
 margin: 0 0 0 0;
 border-radius: 10px;

@@ -34,17 +34,19 @@ export const Login = () => {
         value: e.target.value,
         hasError: false,
         errorMsg: "",
-      }
-    }
+      },
+    };
 
     if (inputCur.value.length < 10 && inputCur.name === "email") {
-      change[inputCur.name].hasError = true
-      change[inputCur.name].errorMsg = "Email needs to be at least 10 characters"
-    }else if(inputCur.value.length < 3 && inputCur.name === "password"){
-      change[inputCur.name].hasError = true
-      change[inputCur.name].errorMsg = "This password is too easy. You need a better one"
+      change[inputCur.name].hasError = true;
+      change[inputCur.name].errorMsg =
+        "Email needs to be at least 10 characters";
+    } else if (inputCur.value.length < 3 && inputCur.name === "password") {
+      change[inputCur.name].hasError = true;
+      change[inputCur.name].errorMsg =
+        "This password is too easy. You need a better one";
     }
-      setInputs((before) => ({ ...before, ...change }));
+    setInputs((before) => ({ ...before, ...change }));
   };
   const onLoginSubmit = (e) => {
     e.preventDefault();
@@ -59,14 +61,14 @@ export const Login = () => {
       navigate("/");
     });
   };
-//#endregion
+  //#endregion
+  
   return (
     <section id="login">
       <div className={style.form}>
         <h2>Login</h2>
         <form onSubmit={onLoginSubmit} className={style["login-form"]}>
           <div>
-
             {input.email.hasError && (
               <label className={style.errorLabel} htmlFor="email">
                 {input.email.errorMsg}

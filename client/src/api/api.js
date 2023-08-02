@@ -69,7 +69,6 @@ async function del(url) {
 async function login(data) {
 
     const serverRes = await post('/users/login', data)
-    console.log(serverRes);
     
     const userData = {
         email: serverRes.email, 
