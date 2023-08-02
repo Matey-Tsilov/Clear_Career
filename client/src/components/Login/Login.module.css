@@ -86,3 +86,24 @@
   color: #5c9596;
   text-decoration: none;
 }
+
+/*  */
+.errorMsg {
+
+}
+
+.errorBorder {
+  border: 1px solid red;
+}
+
+.inputField {
+  border: 1px solid #0c6478;
+  border-radius: 6px;
+  margin: 10px 0 10px 0;
+}
+
+.inputField input {
+margin: 0 0 0 0;
+border-radius: 6px;
+}
+

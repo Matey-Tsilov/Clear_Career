@@ -12,10 +12,10 @@ exports.register = async (userData) => {
 }
 exports.login = async (email, password) => {
 const existing = await User.findOne({email})
-const isSame = await bcrypt.compare(password, existing?.password)
 if (!existing) {
   throw new Error('Incorrect email or password!')
 }
+const isSame = await bcrypt.compare(password, existing?.password)
 if (!isSame) {
   throw new Error('Incorrect email or password!')
 }

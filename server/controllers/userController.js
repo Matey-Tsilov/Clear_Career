@@ -4,7 +4,6 @@ const mongooseErrorMapper = require('../utils/mongooseErrorMapper')
 
 router.post("/login", async (req, res) => {
   const {email, password} = req.body;
-  console.log(email);
 
   try {
    const newUser = await userService.login(email, password)
