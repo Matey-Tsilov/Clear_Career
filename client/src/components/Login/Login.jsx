@@ -36,22 +36,33 @@ export const Login = () => {
       <div className={style.form}>
         <h2>Login</h2>
         <form onSubmit={onLoginSubmit} className={style["login-form"]}>
-          <input
-            type="text"
-            name="email"
-            id="email"
-            placeholder="Type email here:"
-            onChange={onInputChange}
-            value={input.email}
-          />
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Type password here:"
-            onChange={onInputChange}
-            value={input.password}
-          />
+          <div className={style.inputField}>
+            <label className={style.error} htmlFor="email">
+              Email is already taken!
+            </label>
+            <input
+              type="text"
+              name="email"
+              id="email"
+              placeholder="Type email here:"
+              onChange={onInputChange}
+              value={input.email}
+            />
+          </div>
+          <div className={style.inputField}>
+            <label className={style.error} htmlFor="password">
+              {}
+            </label>
+            <input
+              //className={errors.password && style.errorMsg}
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Type password here:"
+              onChange={onInputChange}
+              value={input.password}
+            />
+          </div>
           <button type="submit">login</button>
           <p className={style.message}>
             Not registered? <Link to="/register">Create an account</Link>
