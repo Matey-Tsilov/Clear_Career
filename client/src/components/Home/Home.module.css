@@ -12,7 +12,7 @@ section {
 }
 
 #home {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 #home img {
@@ -29,4 +29,25 @@ section {
   font-size: 27px;
   color: rgb(12 100 120);
   text-align: center;
+}
+
+.btnsContainer {
+  text-align: center;
+  margin: 2em auto 0 auto;
+}
+.redirectBtn{
+  margin: 0em 0.5em;
+  height: 30px; 
+  font-size: 1.5em;
+  border: 4px solid #e0ecf1;
+  border-radius: 0.5em;
+  background-color: #0c6478;
+  color: white;
+  padding: 30px;
+  align-items: center;
+  display: inline-flex;
+}
+.redirectBtn:hover{
+  color: white;
+  border: 1px solid wheat;
 }

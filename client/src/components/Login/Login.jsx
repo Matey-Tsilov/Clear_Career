@@ -1,16 +1,19 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleXmark } from '@fortawesome/free-regular-svg-icons'
+
 import { login } from "../../services/userService";
 import { UserContext } from "../../contexts/userContext";
 
 import style from "./Login.module.css";
 
-export const Login = () => {
+export const Login = ({close}) => {
   const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const [input, setInputs] = useState({
+  const [inputs, setInputs] = useState({
     email: { value: "", hasError: false, errorMsg: "" },
     password: { value: "", hasError: false, errorMsg: "" },
   });
@@ -19,9 +22,9 @@ export const Login = () => {
     const change = {
       [e.target.name]: {
         value: e.target.value,
-        hasError: input[e.target.name].hasError,
-        errorMsg: input[e.target.name].errorMsg,
-      },
+        hasError: inputs[e.target.name].hasError,
+        errorMsg: inputs[e.target.name].errorMsg,
+      }
     };
 
     setInputs((before) => ({ ...before, ...change }));
@@ -41,7 +44,7 @@ export const Login = () => {
       change[inputCur.name].hasError = true;
       change[inputCur.name].errorMsg =
         "Email needs to be at least 10 characters";
-    } else if (inputCur.value.length < 3 && inputCur.name === "password") {
+    } else if (inputCur.value.length <= 3 && inputCur.name === "password") {
       change[inputCur.name].hasError = true;
       change[inputCur.name].errorMsg =
         "This password is too easy. You need a better one";
@@ -52,8 +55,8 @@ export const Login = () => {
     e.preventDefault();
 
     const data = {
-      email: input.email.value.trim(),
-      password: input.password.value.trim(),
+      email: inputs.email.value.trim(),
+      password: inputs.password.value.trim(),
     };
 
     login(data).then((res) => {
@@ -62,46 +65,46 @@ export const Login = () => {
     });
   };
   //#endregion
-  
+
   return (
-    <section id="login">
       <div className={style.form}>
+        <FontAwesomeIcon onClick={close} size="xl" className={style.icon} icon={faCircleXmark} />
         <h2>Login</h2>
         <form onSubmit={onLoginSubmit} className={style["login-form"]}>
           <div>
-            {input.email.hasError && (
+            {inputs.email.hasError && (
               <label className={style.errorLabel} htmlFor="email">
-                {input.email.errorMsg}
+                {inputs.email.errorMsg}
               </label>
             )}
 
             <input
-              className={input.email.hasError && style.errorInput}
+              className={inputs.email.hasError && style.errorInput}
               type="text"
               name="email"
               id="email"
               placeholder="Type email here:"
               onChange={onInputChange}
               onBlur={onInputBlur}
-              value={input.email.value}
+              value={inputs.email.value}
             />
           </div>
-          <div className={style.errorInputfield}>
-            {input.password.hasError && (
+          <div>
+            {inputs.password.hasError && (
               <label className={style.errorLabel} htmlFor="password">
-                {input.password.errorMsg}
+                {inputs.password.errorMsg}
               </label>
             )}
 
             <input
-              className={input.password.hasError && style.errorInput}
+              className={inputs.password.hasError && style.errorInput}
               type="password"
               name="password"
               id="password"
               placeholder="Type password here:"
               onChange={onInputChange}
               onBlur={onInputBlur}
-              value={input.password.value}
+              value={inputs.password.value}
             />
           </div>
           <button type="submit">login</button>
@@ -110,6 +113,5 @@ export const Login = () => {
           </p>
         </form>
       </div>
-    </section>
   );
 };

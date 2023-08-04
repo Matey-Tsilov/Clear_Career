@@ -12,23 +12,15 @@ export const Header = () => {
   return (
     <header>
       {/* Navigation */}
-      <a id="logo">
+      <Link to={'/'} id="logo">
         <img id="logo-img" src={logo} alt="" />
-      </a>
+      </Link>
       <nav>
         <div>
           <Link to="/profile">Welcome, <span>{user.email || "Guest"}</span></Link>
           <Link to="/dashboard">Dashboard</Link>
         </div>
-        {Object.values(user) == 0 
-                     ? 
-        (
-          <div className={style.guest}>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
-          </div>
-        )
-                     :
+        {Object.values(user) != 0 && 
         (
           <div className={style.user}>
             <Link to="/create">Create Offer</Link>
