@@ -61,7 +61,7 @@ export const Login = ({close}) => {
 
     login(data).then((res) => {
       setUser(res);
-      navigate("/");
+      navigate("/dashboard");
     });
   };
   //#endregion

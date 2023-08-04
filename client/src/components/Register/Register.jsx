@@ -67,7 +67,7 @@ export const Register = ({close}) => {
 
      register(send).then(res => {
          setUser(res)
-         navigate('/')
+         navigate('/dashboard')
      })
 
   };

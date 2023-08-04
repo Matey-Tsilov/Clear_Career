@@ -12,7 +12,7 @@ export const Header = () => {
   return (
     <header>
       {/* Navigation */}
-      <Link to={'/'} id="logo">
+      <Link to='/' id="logo">
         <img id="logo-img" src={logo} alt="" />
       </Link>
       <nav>
@@ -24,7 +24,7 @@ export const Header = () => {
         (
           <div className={style.user}>
             <Link to="/create">Create Offer</Link>
-            <Link onClick={() => setUser()} to="/">Logout</Link>
+            <Link onClick={() => setUser()} to="/dashboard">Logout</Link>
           </div>
         )}
       </nav>
