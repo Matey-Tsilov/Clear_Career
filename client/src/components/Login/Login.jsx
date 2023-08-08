@@ -9,7 +9,7 @@ import { UserContext } from "../../contexts/userContext";
 
 import style from "./Login.module.css";
 
-export const Login = ({close}) => {
+export const Login = ({close, open}) => {
   const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -109,7 +109,7 @@ export const Login = ({close}) => {
           </div>
           <button type="submit">login</button>
           <p className={style.message}>
-            Not registered? <Link to="/register">Create an account</Link>
+            Not registered? <Link onClick={open}>Create an account</Link>
           </p>
         </form>
       </div>

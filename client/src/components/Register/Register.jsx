@@ -8,7 +8,7 @@ import { register } from "../../services/userService";
 import style from "./Register.module.css";
 import { UserContext } from "../../contexts/userContext";
 
-export const Register = ({close}) => {
+export const Register = ({close, open}) => {
   const [inputs, setInputs] = useState({
     email: {value: '', hasError: false, errorMsg: ''},
     password: {value: '', hasError: false, errorMsg: ''},
@@ -155,7 +155,7 @@ export const Register = ({close}) => {
           </div>
           <button type="submit">register</button>
           <p className={style.message}>
-            Already registered? <Link to="/login">Login</Link>
+            Already registered? <Link onClick={open} >Login</Link>
           </p>
         </form>
       </div>

@@ -26,7 +26,8 @@ exports.validateToken = async (token) => {
     console.log('Token is blacklisted!');
     throw new Error()
   }
-  //With the secret we chec if the token has been changed!
+  //With the secret we check if the token has been changed!
+  //it might be changed, we need to handle those kind of errors!
    const valid = await jwt.verify(token, SECRET)
    return valid
 }
