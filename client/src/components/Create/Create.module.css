@@ -10,13 +10,14 @@
   max-width: 460px;
   margin: auto;
   margin-top: 100px;
-  padding: 45px;
-  text-align: center;
+  padding: 10px 45px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  border-radius: 15px;
+
 }
 
 .form h2 {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   font-size: 30px;
 }
 
@@ -26,7 +27,6 @@
   background: #f2f2f2;
   width: 100%;
   height: 50px;
-  border: 0;
   margin: 0 0 15px;
   padding: 15px;
   box-sizing: border-box;
@@ -46,7 +46,7 @@
   text-transform: uppercase;
   outline: 0;
   background: #5c9596;
-  width: 100%;
+  width: 30%;
   border: 0;
   padding: 15px;
   color: #ffffff;
@@ -54,6 +54,10 @@
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
+  text-align: center;
+  margin: 1em auto;
+  display: block;
+  border-radius: 1em;
 }
 .form button:hover,
 .form button:active,
@@ -86,3 +90,23 @@
   color: #5c9596;
   text-decoration: none;
 }
+
+/* custom properties */
+
+.errorLabel {
+  text-align: left;
+  padding: 0 0 0 15px;
+  vertical-align: middle;
+  color: red;
+ }
+ 
+ form input, form textarea {
+   border: 1px solid #5c9596;
+   border-radius: 6px;
+ }
+ .errorInput {
+ margin: 0 0 0 0;
+ border-radius: 10px;
+ border: 1px solid red;
+ }
+ 
