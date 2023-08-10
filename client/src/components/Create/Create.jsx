@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
 import style from "./Create.module.css";
 
 import * as offerService from "../../services/offerService";
+import { NotifyContext } from "../../contexts/notificationContext";
 
 export const Create = () => {
   const navigate = useNavigate();
+  const {setNotify} = useContext(NotifyContext)
 
   const [inputs, setInputs] = useState({
     title: {value: "", hasError: false, errMsg: ''},
@@ -26,13 +28,18 @@ export const Create = () => {
   const onCreateSubmit = async (e) => {
     e.preventDefault();
 
+    const sentData = (Object.entries(inputs))
+    .map((([a, b]) => ({[a]: b.value})))
+    .reduce((acc, cur) => Object.assign(acc, cur), {})
+
     try {
-      await offerService.create(inputs);
+      await offerService.create(sentData);
       navigate("/dashboard");
     } catch (error) {
-      alert(error.message);
+      setNotify({opened: true, msg: error.message})
     }
   };
+
 
   const onInputValidation = (e) => {
 

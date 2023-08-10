@@ -7,8 +7,10 @@ import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 import { register } from "../../services/userService";
 import style from "./Register.module.css";
 import { UserContext } from "../../contexts/userContext";
+import { NotifyContext } from "../../contexts/notificationContext";
 
 export const Register = ({close, open}) => {
+  const {setNotify} = useContext(NotifyContext)
   const [inputs, setInputs] = useState({
     email: {value: '', hasError: false, errorMsg: ''},
     password: {value: '', hasError: false, errorMsg: ''},
@@ -69,6 +71,7 @@ export const Register = ({close, open}) => {
          setUser(res)
          navigate('/dashboard')
      })
+     .catch(err => setNotify({opened: true, msg: err.message}))
 
   };
 

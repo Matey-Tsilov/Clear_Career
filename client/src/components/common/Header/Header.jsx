@@ -5,10 +5,13 @@ import logo from "../../../assets/logo.jpg";
 
 import { UserContext } from "../../../contexts/userContext.js";
 import { useContext } from "react";
+import { Notification } from '../Notification/Notification'
+import { NotifyContext } from "../../../contexts/notificationContext";
 
 export const Header = () => {
   const { user, setUser } = useContext(UserContext);
-
+  const {notify} = useContext(NotifyContext)
+  
   return (
     <header>
       {/* Navigation */}
@@ -28,6 +31,7 @@ export const Header = () => {
           </div>
         )}
       </nav>
+      {notify.opened && <Notification message={notify.msg}/>}
     </header>
   );
 };
