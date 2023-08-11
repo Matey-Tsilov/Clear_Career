@@ -1,7 +1,6 @@
 .notification {
     width: 18.5em;
-    height: 10em;
-    background-color: #ff0000;
+    max-height: 30em;
     display: block;
     position: absolute;
     top: 110%;
@@ -10,17 +9,12 @@
     transition: opacity 5s;
 }
 
-.notification > h1 {
-    text-align: center;
-    font-size: 2em;
-    color: black;
+.notification p {
+    background-color: #d40505;
+    color: azure;
+    display: block;
+    line-height: 1.5;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: 300;
-    font-style: normal;
-    text-decoration: none;
-    margin: 0.5em 0;
-}
-
-.notification > p {
-    text-align: center;
+    border-radius: 1em;
+    padding: 0.4em;
 }

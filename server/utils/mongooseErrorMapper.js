@@ -1,10 +1,9 @@
 module.exports = (err) => {
   //if it doesn't meet mongoose valiadtion + is not filled
   if (err.name == "ValidationError") {
-    console.log(err.errors);
     const mongooseError = Object.values(err.errors)
     .map(err => err.properties.message)
-    .join('\n')
+    .join("\n")
     return mongooseError
   //if email already has a duplicate value
   }else if(err.name == "MongoServerError") {

@@ -11,8 +11,9 @@ export const Notification = ({message}) => {
        setTimeout(() => setNotify({opened: false, msg: ''}), 5000)
     }, [])
 
-    return <div className={style.notification}>
-        <h1>Error</h1>
-        <p>{message}</p>
+    return (
+    <div className={style.notification}>
+            {message.split('\n').map(m => <p>{m}</p>)}
     </div> 
+    )
 }
