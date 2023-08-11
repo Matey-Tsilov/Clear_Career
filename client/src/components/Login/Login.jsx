@@ -7,11 +7,14 @@ import { faCircleXmark } from '@fortawesome/free-regular-svg-icons'
 import { login } from "../../services/userService";
 import { UserContext } from "../../contexts/userContext";
 
+
 import style from "./Login.module.css";
+import { NotifyContext } from "../../contexts/notificationContext";
 
 export const Login = ({close, open}) => {
   const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
+  const { setNotify } = useContext(NotifyContext)
 
   const [inputs, setInputs] = useState({
     email: { value: "", hasError: false, errorMsg: "" },
@@ -62,7 +65,7 @@ export const Login = ({close, open}) => {
     login(data).then((res) => {
       setUser(res);
       navigate("/dashboard");
-    });
+    }).catch(err => setNotify({opened: true, msg: err.message}));
   };
   //#endregion
 
