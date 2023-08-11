@@ -58,7 +58,7 @@ export const Register = ({close, open}) => {
     e.preventDefault();
 
     if (inputs.password.value !== inputs.re_password.value) {
-      return alert("Sorry, looks like your passwords mismatch");
+      return setNotify({opened: true, msg:"Sorry, looks like your passwords mismatch"});
     }
 
     const send = {
