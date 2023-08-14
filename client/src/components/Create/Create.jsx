@@ -36,6 +36,7 @@ export const Create = () => {
       const offer = await offerService.create(sentData);
       navigate(`/details/${offer._id}`);
     } catch (error) {
+      
       setNotify({opened: true, msg: error.message})
     }
   };

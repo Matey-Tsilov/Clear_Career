@@ -9,11 +9,11 @@ import * as offerService from "../../services/offerService"
 export const Edit = () => {
   
   const navigate = useNavigate();
-  
+
   const {setNotify} = useContext(NotifyContext)
 
   const {id} = useParams()
-  
+
   const [inputs, setInputs] = useState({});
 
   useEffect(() => {
