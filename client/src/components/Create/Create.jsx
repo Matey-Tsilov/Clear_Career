@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import style from "./Create.module.css";
 
@@ -33,8 +33,8 @@ export const Create = () => {
     .reduce((acc, cur) => Object.assign(acc, cur), {})
 
     try {
-      await offerService.create(sentData);
-      navigate("/dashboard");
+      const offer = await offerService.create(sentData);
+      navigate(`/details/${offer._id}`);
     } catch (error) {
       setNotify({opened: true, msg: error.message})
     }

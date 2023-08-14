@@ -26,7 +26,7 @@ const offersSchema = new mongoose.Schema({
     type: Number,
     required: [true, "The salary is one of the most important things, please note it!"],
     min: [1000, "Hmm, ai't that too low?"],
-    max: [10000, "What??? Are you a web developer, named Mathew?"]
+    max: [10000, "You must be the CEO - Matey Tsilov!"]
   }, 
   _ownerId: {
    type: mongoose.Types.ObjectId,

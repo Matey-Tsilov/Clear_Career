@@ -12,12 +12,6 @@ async function request(url, options) {
         throw new Error(problem.message)
         }
 
-        // if (res.status == 204) {
-        //     return res
-        // }
-        // return res.json()
-
-        //за стари версии на сървъра:
         try {
             return await res.json()
         } catch (error) {
@@ -26,8 +20,6 @@ async function request(url, options) {
 
 
     } catch (err) {
-        //alert(err.message)
-        //notify(err.message)
         throw err
     }
     
@@ -66,6 +58,7 @@ async function del(url) {
     return request(url, createOptions('delete'))
 }
 
+//#region Authentication
 async function login(data) {
 
     const serverRes = await post('/users/login', data)
@@ -102,6 +95,7 @@ async function logout() {
     await get('/users/logout')
     clearUserData()
 }
+//#endregion
 
 export {
     login,

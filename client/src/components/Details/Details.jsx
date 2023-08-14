@@ -1,59 +1,59 @@
+import { useParams, Link } from 'react-router-dom'
+import { useContext, useEffect, useState } from 'react'
+
+
 import style from './Details.module.css'
-import img from '../../assets/example1.png'
+
+import * as offerService from '../../services/offerService'
+import { NotifyContext } from '../../contexts/notificationContext'
 
 export const Details = () => {
-
+const {id} = useParams()
+const [offer, setOffer] = useState({})
+const {setNotify} = useContext(NotifyContext)
   
+useEffect(() => {
+offerService.getById(id)
+.then(res => setOffer(res))
+.catch(err => setNotify({opened: true, msg: err.message}))
+}, [])
     return (
-    <section id={style.details}>
-    <div id={style["details-wrapper"]}>
-      <img id={style["details-img"]} src={img} alt="example1" />
-      <p id={style["details-title"]}>Senior Frontend Software Engineer</p>
-      <p id={style["details-category"]}>
-        Category: <span id={style["categories"]}>IT, Developer, WEB</span>
-      </p>
-      <p id={style["details-salary"]}>
-        Salary: <span id={style["salary-number"]}>7000</span>
-      </p>
-      <div id={style["info-wrapper"]}>
-        <div id={style["details-description"]}>
-          <h4>Description</h4>
-          <span>
-            We are looking for programmers with a keen eye for design for the
-            position of front end developer. Front end developers are
-            responsible for ensuring the alignment of web design and user
-            experience requirements, optimizing web pages for maximum
-            efficiency, and maintaining brand consistency across all web
-            pages, among other duties.
-          </span>
+      <section id={style.details}>
+      <div id={style["details-wrapper"]}>
+        <img id={style["details-img"]} src={offer.imageUrl} alt="example1" />
+        <p id={style["details-title"]}>{offer.title}</p>
+        <p id={style["details-category"]}>
+          Category: <span id={style["categories"]}>{offer.category}</span>
+        </p>
+        <p id={style["details-salary"]}>
+          Salary: <span id={style["salary-number"]}>{offer.salary}</span>
+        </p>
+        <div id={style["info-wrapper"]}>
+          <div id={style["details-description"]}>
+            <h4>Description</h4>
+            <span>{offer.description}</span>
+          </div>
+          <div id={style["details-requirements"]}>
+            <h4>Requirements</h4>
+            <span>{offer.requirements}</span>
+          </div>
         </div>
-        <div id={style["details-requirements"]}>
-          <h4>Requirements</h4>
-          <span>
-            Degree in computer science or related field. Understanding of key
-            design principles. Proficiency in HTML, CSS, JavaScript.
-            Experience with responsive and adaptive design. Good
-            problem-solving skills. Excellent verbal communication skills.
-            Good interpersonal skills.
-          </span>
+        <p>
+          Applications: <strong id={style["applications"]}>1</strong>
+        </p>
+        {/*Edit and Delete are only for creator*/}
+        <div id={style["action-buttons"]}>
+          <Link to={`/edit/${offer._id}`} id="edit-btn">
+            Edit
+          </Link>
+          <Link id="delete-btn">
+            Delete
+          </Link>
+          {/*Bonus - Only for logged-in users ( not authors )*/}
+          <Link id="apply-btn">
+            Apply
+          </Link>
         </div>
       </div>
-      <p>
-        Applications: <strong id={style["applications"]}>1</strong>
-      </p>
-      {/*Edit and Delete are only for creator*/}
-      <div id={style["action-buttons"]}>
-        <a href="" id="edit-btn">
-          Edit
-        </a>
-        <a href="" id="delete-btn">
-          Delete
-        </a>
-        {/*Bonus - Only for logged-in users ( not authors )*/}
-        <a href="" id="apply-btn">
-          Apply
-        </a>
-      </div>
-    </div>
-  </section>)
+    </section>)
 }

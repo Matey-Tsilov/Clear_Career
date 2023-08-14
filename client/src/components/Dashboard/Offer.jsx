@@ -13,7 +13,7 @@ export const Offer = ({offer}) => {
           <strong>Salary:</strong>
           <span className={style.salary}>{offer.salary}</span>
         </p>
-        <Link className={style["details-btn"]} to={`details/${offer._id}`}>
+        <Link className={style["details-btn"]} to={`/details/${offer._id}`}>
           Details
         </Link>
       </div>
