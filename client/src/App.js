@@ -11,6 +11,7 @@ import { Profile } from "./components/UserProfile/UserProfile.jsx";
 
 import { UserContextProvider } from "./contexts/userContext.js";
 import { NotifyContextProvider } from "./contexts/notificationContext.js";
+import { ModalContextProvider } from "./contexts/modalContext.js";
 
 import "./App.module.css";
 
@@ -19,22 +20,24 @@ import { Login_RegisterGuard } from "./RouteGuards/Login_RegisterGuard.js";
 function App() {
   return (
     <div id="wrapper">
-      <NotifyContextProvider>
-        <UserContextProvider>
-          <Header />
-          <Routes>
-            <Route element={<Login_RegisterGuard />}>
-              <Route path="/" element={<Home />} />
-            </Route>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/create" element={<Create />} />
-            <Route path="/edit/:id" element={<Edit />} />
-            <Route path="/details/:id" element={<Details />} />
-            <Route path="/profile/:id" element={<Profile />} />
-          </Routes>
-          <Footer />
-        </UserContextProvider>
-      </NotifyContextProvider>
+      <ModalContextProvider>
+        <NotifyContextProvider>
+          <UserContextProvider>
+            <Header />
+            <Routes>
+              <Route element={<Login_RegisterGuard />}>
+                <Route path="/" element={<Home />} />
+              </Route>
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/create" element={<Create />} />
+              <Route path="/edit/:id" element={<Edit />} />
+              <Route path="/details/:id" element={<Details />} />
+              <Route path="/profile/:id" element={<Profile />} />
+            </Routes>
+            <Footer />
+          </UserContextProvider>
+        </NotifyContextProvider>
+      </ModalContextProvider>
     </div>
   );
 }

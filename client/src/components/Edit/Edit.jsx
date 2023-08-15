@@ -166,7 +166,7 @@ export const Edit = () => {
             placeholder="Requirements"
             rows={4}
             cols={50}
-            value={inputs.requirements?.value}
+            value={(inputs.requirements?.value)?.split('*').join('\n')}
             onBlur={onInputValidation}
             onChange={onInputChange}
           />
