@@ -4,9 +4,11 @@ import { useContext, useEffect, useState } from 'react'
 import style from './Details.module.css'
 
 import * as offerService from '../../services/offerService'
+
 import { NotifyContext } from '../../contexts/notificationContext'
-import { Modal } from '../Common/Modal/Modal'
 import { ModalContext } from '../../contexts/modalContext'
+
+import { Modal } from '../Common/Modal/Modal'
 
 export const Details = () => {
 const {id} = useParams()
