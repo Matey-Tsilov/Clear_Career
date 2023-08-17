@@ -4,19 +4,27 @@ import style from "./Modal.module.css";
 
 import { ModalContext } from "../../../contexts/modalContext";
 
-export const Modal = ({message, onSuccess}) => {
-    const {setModal} = useContext(ModalContext);
+export const Modal = ({ message, onSuccess }) => {
+  const { setModal } = useContext(ModalContext);
 
   return (
-    <div className={style.modal}>
-      <h3 className="warning">{message}</h3>
-      <button className={style.btn} onClick={() => {
-        setModal({opened: false, msg:''})
-        onSuccess()
-        }}>Confirm</button>
-      <button className={style.btn} onClick={() => 
-        setModal({opened: false, msg:''}
-        )}>Cancel</button>
+    <div className={style.overlay}>
+      <div className={style.modal}>
+        <h3 className={style.warning}>{message}</h3>
+        <div className={style.btns}>
+          <button
+            onClick={() => {
+              setModal({ opened: false, msg: "" });
+              onSuccess();
+            }}
+          >
+            Confirm
+          </button>
+          <button onClick={() => setModal({ opened: false, msg: "" })}>
+            Cancel
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

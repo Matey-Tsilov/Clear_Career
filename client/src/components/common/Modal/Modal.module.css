@@ -1,9 +1,45 @@
-.modal{
-    
+.modal {
+  position: fixed;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  border: 0.4em solid;
+  bottom: 50%;
+  border-radius: 1em;
+  background-color: #fff;
 }
-.btn {
 
+.btns {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 1em;
 }
-.warning{
-
+.btns > :nth-child(1):hover {
+  background-color: green;
+  color: #fff;
+}
+.btns > :nth-child(2):hover {
+  background-color: red;
+  color: #fff;
+}
+.modal button {
+    display: block;
+    color: #0c6478;
+    margin-bottom: 1em;
+    border-radius: 0.5em;
+    border: 1px solid #0c6478;
+  }
+.warning {
+  flex-basis: 100%;
+  text-align: center;
+  font-size: 1.5em;
+}
+.overlay {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(130, 119, 119, 0.797);
 }
