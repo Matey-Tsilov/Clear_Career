@@ -4,7 +4,7 @@ export const Footer = () => {
 
     return (
     <footer>
-      <p>@ClearCareer</p>
+      <p>All rights reserved &copy; 2023</p>
     </footer>
     )
 }
