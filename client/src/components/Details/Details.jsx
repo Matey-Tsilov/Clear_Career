@@ -20,9 +20,13 @@ offerService.getById(id)
 .then(res => setOffer(res))
 .catch(err => setNotify({opened: true, msg: err.message}))
 }, [])
+
+const onSuccess = () => {
+
+}
     return (
       <>
-      {modal.opened && <Modal />}
+      {modal.opened && <Modal message={modal.msg} onSuccess={onSuccess}/>}
       <section id={style.details}>
       <div id={style["details-wrapper"]}>
         <img id={style["details-img"]} src={offer.imageUrl} alt="example1" />
@@ -51,7 +55,7 @@ offerService.getById(id)
           <Link to={`/edit/${offer._id}`} id="edit-btn">
             Edit
           </Link>
-          <Link onClick={() => setModal({opened: true, msg: "Are you sure you want to delete this record?"})} to="/dashboard" id="delete-btn">
+          <Link onClick={() => setModal({opened: true, msg: "Are you sure you want to delete this record?"})} id="delete-btn">
             Delete
           </Link>
           {/*Bonus - Only for logged-in users ( not authors )*/}
