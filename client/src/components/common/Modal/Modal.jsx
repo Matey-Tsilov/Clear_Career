@@ -8,6 +8,7 @@ export const Modal = ({ message, onSuccess }) => {
   const { setModal } = useContext(ModalContext);
 
   return (
+    //за да центрирам самия модал трябват 2 флексбокса и 2 контейнера
     <div className={style.overlay}>
       <div className={style.modal}>
         <h3 className={style.warning}>{message}</h3>

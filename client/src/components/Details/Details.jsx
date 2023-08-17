@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 
 import style from './Details.module.css'
@@ -15,6 +15,8 @@ const [offer, setOffer] = useState({})
 const {setNotify} = useContext(NotifyContext)
 const {modal, setModal} = useContext(ModalContext)
 
+const navigate = useNavigate()
+
 useEffect(() => {
 offerService.getById(id)
 .then(res => setOffer(res))
@@ -22,7 +24,7 @@ offerService.getById(id)
 }, [])
 
 const onSuccess = () => {
-
+ offerService.remove(id).then(res => navigate('/dashboard'))
 }
     return (
       <>
