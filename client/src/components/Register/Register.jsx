@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,15 +9,19 @@ import style from "./Register.module.css";
 import { UserContext } from "../../contexts/userContext";
 import { NotifyContext } from "../../contexts/notificationContext";
 
-export const Register = ({close, open}) => {
+export const Register = () => {
   const {setNotify} = useContext(NotifyContext)
+  const {setUser} = useContext(UserContext)
+
+  const ref = useRef()
+
   const [inputs, setInputs] = useState({
     email: {value: '', hasError: false, errorMsg: ''},
     password: {value: '', hasError: false, errorMsg: ''},
     re_password: {value: '', hasError: false, errorMsg: ''},
-    workExp: {value: '', hasError: false, errorMsg: ''},
+    workExp: {value: '', hasError: false, errorMsg: ''}
   });
-  const {setUser} = useContext(UserContext)
+  
   const navigate = useNavigate()
 
   const onInputChange = (e) => {
@@ -33,6 +37,10 @@ export const Register = ({close, open}) => {
   };
   const onInputBlur = (e) => {
     const inputCur = e.target;
+    
+    if (e.target.name == "sex") {
+      return;
+    }
 
     const change = {
       [e.target.name]: {
@@ -48,7 +56,7 @@ export const Register = ({close, open}) => {
     } else if (inputCur.name === "password" && inputCur.value.length <= 3) {
       change[inputCur.name].hasError = true;
       change[inputCur.name].errorMsg = "This password is too easy. You need a better one";
-    } else if(inputCur.name == "re_password" && inputCur.value != inputs.password.value || inputCur.value == ''){
+    } else if(inputCur.name === "re_password" && inputCur.value !== inputs.password.value || inputCur.value === ''){
       change[inputCur.name].hasError = true;
       change[inputCur.name].errorMsg = "Passwords mismatch";
     }
@@ -65,6 +73,7 @@ export const Register = ({close, open}) => {
       email: inputs.email.value.trim(),
       password: inputs.password.value.trim(),
       workExp: inputs.workExp.value.trim(),
+      sex: ref.current.value.trim(),
     };
 
      register(send).then(res => {
@@ -78,10 +87,10 @@ export const Register = ({close, open}) => {
   return (
     <section id="register">
       <div className={style.form}>
-      <FontAwesomeIcon onClick={close} size="xl" className={style.icon} icon={faCircleXmark} />
+      <FontAwesomeIcon onClick={() => navigate('/')} size="xl" className={style.icon} icon={faCircleXmark} />
         <h2>Register</h2>
         <form className={style["login-form"]} onSubmit={onRegisterSubmit}>
-        <div>
+          <div>
             {inputs.email.hasError && (
               <label className={style.errorLabel} htmlFor="email">
                 {inputs.email.errorMsg}
@@ -156,9 +165,36 @@ export const Register = ({close, open}) => {
               value={inputs.workExp.value}
             />
           </div>
+
+          <div>
+            {/* {inputs.sex.hasError && (
+              <label className={style.errorLabel} htmlFor="sex">
+                {inputs.sex.errorMsg}
+              </label>
+            )} */}
+            <input
+              className={inputs.sex?.hasError && style.errorInput}
+              type="radio"
+              name="sex"
+              id="sex"
+              onChange={onInputChange}
+              onBlur={onInputBlur}
+              value="male"
+              checked
+            />
+            <input
+              className={inputs.sex?.hasError && style.errorInput}
+              type="radio"
+              name="sex"
+              id="sex"
+              onChange={onInputChange}
+              onBlur={onInputBlur}
+              value='female'
+            />
+          </div>
           <button type="submit">register</button>
           <p className={style.message}>
-            Already registered? <Link onClick={open} >Login</Link>
+            Already registered? <Link to={'/login'} >Login</Link>
           </p>
         </form>
       </div>

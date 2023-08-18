@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema({
     reuired: [true, "How will we find a job, if you don't tell us your experience?"],
     min: [0, "You are simply too young to start working"],
     max: [70, "Are you sure, you have worked so many years?"]
+  },
+  sex: {
+    type: String,
+    enum: [["male", "female",], "Sorry, there are only 2 genders."]
   }
 });
 

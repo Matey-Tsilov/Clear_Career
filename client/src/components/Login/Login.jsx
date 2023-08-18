@@ -11,7 +11,7 @@ import { UserContext } from "../../contexts/userContext";
 import style from "./Login.module.css";
 import { NotifyContext } from "../../contexts/notificationContext";
 
-export const Login = ({close, open}) => {
+export const Login = () => {
   const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
   const { setNotify } = useContext(NotifyContext)
@@ -71,7 +71,7 @@ export const Login = ({close, open}) => {
 
   return (
       <div className={style.form}>
-        <FontAwesomeIcon onClick={close} size="xl" className={style.icon} icon={faCircleXmark} />
+        <FontAwesomeIcon onClick={() => navigate('/')} size="xl" className={style.icon} icon={faCircleXmark} />
         <h2>Login</h2>
         <form onSubmit={onLoginSubmit} className={style["login-form"]}>
           <div>
@@ -112,7 +112,7 @@ export const Login = ({close, open}) => {
           </div>
           <button type="submit">login</button>
           <p className={style.message}>
-            Not registered? <Link onClick={open}>Create an account</Link>
+            Not registered? <Link to='/register'>Create an account</Link>
           </p>
         </form>
       </div>

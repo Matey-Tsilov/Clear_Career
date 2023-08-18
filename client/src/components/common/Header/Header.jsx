@@ -19,9 +19,12 @@ export const Header = () => {
         <img id="logo-img" src={logo} alt="" />
       </Link>
       <nav>
-        <div>
+        <div className="guest-specific">
           <Link to="/profile">Welcome, <span>{user.email || "Guest"}</span></Link>
           <Link to="/dashboard">Dashboard</Link>
+          <Link to="/register">Register</Link>
+          <Link to="/login">Login</Link>
+
         </div>
         {Object.values(user) != 0 && 
         (

@@ -8,9 +8,12 @@ import { Create } from "./components/Create/Create.jsx";
 import { Edit } from "./components/Edit/Edit.jsx";
 import { Details } from "./components/Details/Details.jsx";
 import { Profile } from "./components/UserProfile/UserProfile.jsx";
+import { Login } from "./components/Login/Login.jsx";
+import { Register } from "./components/Register/Register.jsx";
 
-import { UserContextProvider } from "./contexts/userContext.js";
+
 import { NotifyContextProvider } from "./contexts/notificationContext.js";
+import { UserContextProvider } from "./contexts/userContext.js";
 import { ModalContextProvider } from "./contexts/modalContext.js";
 
 import "./App.module.css";
@@ -26,8 +29,10 @@ function App() {
             <Header />
             <Routes>
               <Route element={<Login_RegisterGuard />}>
-                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login/>}/>
+                <Route path="/register" element={<Register/>}/>
               </Route>
+                <Route path="/" element={<Home />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/create" element={<Create />} />
               <Route path="/edit/:id" element={<Edit />} />
