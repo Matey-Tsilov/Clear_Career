@@ -1,10 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
-.login-page {
-  width: 360px;
-  padding: 8% 0 0;
-  margin: auto;
-}
 .form {
   background: #ffffff;
   max-width: 460px;
@@ -20,7 +14,7 @@
   font-size: 30px;
 }
 
-.form input {
+form > div > input {
   font-family: "Roboto", sans-serif;
   outline: 0;
   background: #f2f2f2;
@@ -31,6 +25,7 @@
   box-sizing: border-box;
   font-size: 14px;
 }
+
 .form textarea {
   border: 1px solid rgb(206, 206, 206);
   width: 99%;
@@ -64,9 +59,6 @@
   background: #5c9596;
 }
 
-.form .register-form {
-  display: none;
-}
 .container {
   position: relative;
   z-index: 1;
@@ -93,7 +85,7 @@
 /* Custom classes */
 .errorLabel {
  text-align: left;
- padding: 0 0 0 15px;
+ padding: 1em 0 0 15px;
  vertical-align: middle;
  color: red;
 }
@@ -103,7 +95,6 @@ form input {
   border-radius: 6px;
 }
 .errorInput {
-margin: 0 0 0 0;
 border-radius: 10px;
 border: 1px solid red;
 }
@@ -114,4 +105,20 @@ border: 1px solid red;
 .icon:hover{
   cursor: pointer;
   color: #e74c3c
+}
+.radioInputsBox {
+  display: flex;
+  justify-content: center;
+  margin: 0.5em 0 1.5em 0;
+}
+
+.labelHeading{
+  font-size: 1.2em;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 0.6em;
+}
+
+.message{
+  text-align: center;
 }

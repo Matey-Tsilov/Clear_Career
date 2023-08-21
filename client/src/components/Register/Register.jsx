@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,34 +10,39 @@ import { UserContext } from "../../contexts/userContext";
 import { NotifyContext } from "../../contexts/notificationContext";
 
 export const Register = () => {
-  const {setNotify} = useContext(NotifyContext)
-  const {setUser} = useContext(UserContext)
+  const { setNotify } = useContext(NotifyContext);
+  const { setUser } = useContext(UserContext);
 
-  const ref = useRef()
+  const navigate = useNavigate();
 
   const [inputs, setInputs] = useState({
-    email: {value: '', hasError: false, errorMsg: ''},
-    password: {value: '', hasError: false, errorMsg: ''},
-    re_password: {value: '', hasError: false, errorMsg: ''},
-    workExp: {value: '', hasError: false, errorMsg: ''}
+    email: { value: "", hasError: false, errorMsg: "" },
+    password: { value: "", hasError: false, errorMsg: "" },
+    re_password: { value: "", hasError: false, errorMsg: "" },
+    workExp: { value: "", hasError: false, errorMsg: "" },
+    sex: { value: "male" },
   });
-  
-  const navigate = useNavigate()
 
   const onInputChange = (e) => {
     const change = {
       [e.target.name]: {
         value: e.target.value,
+      },
+    };
+
+    if (e.target.name != "sex") {
+      Object.assign(change, {
         hasError: inputs[e.target.name].hasError,
         errorMsg: inputs[e.target.name].errorMsg,
-      }
-    };
+      });
+    }
 
     setInputs((before) => ({ ...before, ...change }));
   };
+
   const onInputBlur = (e) => {
     const inputCur = e.target;
-    
+
     if (e.target.name == "sex") {
       return;
     }
@@ -50,13 +55,19 @@ export const Register = () => {
       },
     };
 
-    if (inputCur.name === "email" && inputCur.value.length < 10 ) {
+    if (inputCur.name === "email" && inputCur.value.length < 10) {
       change[inputCur.name].hasError = true;
-      change[inputCur.name].errorMsg = "Email needs to be at least 10 characters";
+      change[inputCur.name].errorMsg =
+        "Email needs to be at least 10 characters";
     } else if (inputCur.name === "password" && inputCur.value.length <= 3) {
       change[inputCur.name].hasError = true;
-      change[inputCur.name].errorMsg = "This password is too easy. You need a better one";
-    } else if(inputCur.name === "re_password" && inputCur.value !== inputs.password.value || inputCur.value === ''){
+      change[inputCur.name].errorMsg =
+        "This password is too easy. You need a better one";
+    } else if (
+      (inputCur.name === "re_password" &&
+        inputCur.value !== inputs.password.value) ||
+      inputCur.value === ""
+    ) {
       change[inputCur.name].hasError = true;
       change[inputCur.name].errorMsg = "Passwords mismatch";
     }
@@ -66,28 +77,36 @@ export const Register = () => {
     e.preventDefault();
 
     if (inputs.password.value !== inputs.re_password.value) {
-      return setNotify({opened: true, msg:"Sorry, looks like your passwords mismatch"});
+      return setNotify({
+        opened: true,
+        msg: "Sorry, looks like your passwords mismatch",
+      });
     }
 
     const send = {
       email: inputs.email.value.trim(),
       password: inputs.password.value.trim(),
       workExp: inputs.workExp.value.trim(),
-      sex: ref.current.value.trim(),
+      sex: inputs.sex.value.trim(),
     };
 
-     register(send).then(res => {
-         setUser(res)
-         navigate('/dashboard')
-     })
-     .catch(err => setNotify({opened: true, msg: err.message}))
-
+    register(send)
+      .then((res) => {
+        setUser(res);
+        navigate("/dashboard");
+      })
+      .catch((err) => setNotify({ opened: true, msg: err.message }));
   };
 
   return (
     <section id="register">
       <div className={style.form}>
-      <FontAwesomeIcon onClick={() => navigate('/')} size="xl" className={style.icon} icon={faCircleXmark} />
+        <FontAwesomeIcon
+          onClick={() => navigate("/")}
+          size="xl"
+          className={style.icon}
+          icon={faCircleXmark}
+        />
         <h2>Register</h2>
         <form className={style["login-form"]} onSubmit={onRegisterSubmit}>
           <div>
@@ -167,34 +186,33 @@ export const Register = () => {
           </div>
 
           <div>
-            {/* {inputs.sex.hasError && (
-              <label className={style.errorLabel} htmlFor="sex">
-                {inputs.sex.errorMsg}
-              </label>
-            )} */}
-            <input
-              className={inputs.sex?.hasError && style.errorInput}
-              type="radio"
-              name="sex"
-              id="sex"
-              onChange={onInputChange}
-              onBlur={onInputBlur}
-              value="male"
-              checked
-            />
-            <input
-              className={inputs.sex?.hasError && style.errorInput}
-              type="radio"
-              name="sex"
-              id="sex"
-              onChange={onInputChange}
-              onBlur={onInputBlur}
-              value='female'
-            />
+            <p className={style.labelHeading}>What is your gender?</p>
+
+            <div className={style.radioInputsBox}>
+              <label htmlFor="sex-m">male</label>
+              <input
+                className={inputs.sex?.hasError && style.errorInput}
+                type="radio"
+                name="sex"
+                id="sex-m"
+                onBlur={onInputChange}
+                value="male"
+                checked
+              />
+              <label htmlFor="sex-m">female</label>
+              <input
+                className={inputs.sex?.hasError && style.errorInput}
+                type="radio"
+                name="sex"
+                id="sex-f"
+                onBlur={onInputChange}
+                value="female"
+              />
+            </div>
           </div>
           <button type="submit">register</button>
           <p className={style.message}>
-            Already registered? <Link to={'/login'} >Login</Link>
+            Already registered? <Link to={"/login"}>Login</Link>
           </p>
         </form>
       </div>
