@@ -12,8 +12,8 @@ import { NotifyContext } from "../../contexts/notificationContext";
 export const Register = () => {
   const { setNotify } = useContext(NotifyContext);
   const { setUser } = useContext(UserContext);
-//Такъв му е defaultState-a за да може при първи ререндър стойността да е male(когато изпращаме до сървър)!
-  const myRef = useRef({checked: true})
+  //Такъв му е defaultState-a за да може при първи ререндър стойността да е male(когато изпращаме до сървър)!
+  const myRef = useRef({ checked: true });
 
   const navigate = useNavigate();
 
@@ -21,11 +21,11 @@ export const Register = () => {
     email: { value: "", hasError: false, errorMsg: "" },
     password: { value: "", hasError: false, errorMsg: "" },
     re_password: { value: "", hasError: false, errorMsg: "" },
-    workExp: { value: "", hasError: false, errorMsg: "" }
+    workExp: { value: "", hasError: false, errorMsg: "" },
   });
 
   const onInputChange = (e) => {
-    const changedProp = e.target.name
+    const changedProp = e.target.name;
     const change = {
       [changedProp]: {
         value: e.target.value,
@@ -35,7 +35,6 @@ export const Register = () => {
     };
     setInputs((before) => ({ ...before, ...change }));
   };
-
   const onInputBlur = (e) => {
     const inputCur = e.target;
 
@@ -55,7 +54,10 @@ export const Register = () => {
       change[inputCur.name].hasError = true;
       change[inputCur.name].errorMsg =
         "This password is too easy. You need a better one";
-    } else if (inputCur.name === "re_password" && (inputCur.value !== inputs.password.value && inputCur.value === "")
+    } else if (
+      inputCur.name === "re_password" &&
+      inputCur.value !== inputs.password.value &&
+      inputCur.value === ""
     ) {
       change[inputCur.name].hasError = true;
       change[inputCur.name].errorMsg = "Passwords mismatch";
@@ -76,7 +78,7 @@ export const Register = () => {
       email: inputs.email.value.trim(),
       password: inputs.password.value.trim(),
       workExp: inputs.workExp.value.trim(),
-      sex: myRef.current?.checked ? "male" : "female"
+      sex: myRef.current?.checked ? "male" : "female",
     };
 
     register(send)
@@ -86,7 +88,6 @@ export const Register = () => {
       })
       .catch((err) => setNotify({ opened: true, msg: err.message }));
   };
-
   return (
     <section id="register">
       <div className={style.form}>
@@ -97,7 +98,9 @@ export const Register = () => {
           icon={faCircleXmark}
         />
         <h2>Register</h2>
+        
         <form className={style["login-form"]} onSubmit={onRegisterSubmit}>
+          <input type="file" id="fileUpload"><img src="../../assets/man.png" alt="buissnessman"/></input>
           <div>
             {inputs.email.hasError && (
               <label className={style.errorLabel} htmlFor="email">
@@ -178,22 +181,21 @@ export const Register = () => {
             <p className={style.labelHeading}>What is your gender?</p>
 
             <div className={style.radioInputsBox}>
-              <label htmlFor="sex-m">male</label>
-              <input
-                ref={myRef}
-                type="radio"
-                name="sex"
-                id="sex-m"
-                value="male"
-                defaultChecked
-              />
-              <label htmlFor="sex-f">female</label>
-              <input
-                type="radio"
-                name="sex"
-                id="sex-f"
-                value="female"
-              />
+              <div className="maleSection">
+                <label htmlFor="sex-m">male</label>
+                <input
+                  ref={myRef}
+                  type="radio"
+                  name="sex"
+                  id="sex-m"
+                  value="male"
+                  defaultChecked
+                />
+              </div>
+              <div className="femaleSection">
+                <label htmlFor="sex-f">female</label>
+                <input type="radio" name="sex" id="sex-f" value="female" />
+              </div>
             </div>
           </div>
           <button type="submit">register</button>
