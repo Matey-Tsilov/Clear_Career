@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,6 +12,8 @@ import { NotifyContext } from "../../contexts/notificationContext";
 export const Register = () => {
   const { setNotify } = useContext(NotifyContext);
   const { setUser } = useContext(UserContext);
+//Такъв му е defaultState-a за да може при първи ререндър стойността да е male(когато изпращаме до сървър)!
+  const myRef = useRef({checked: true})
 
   const navigate = useNavigate();
 
@@ -19,33 +21,23 @@ export const Register = () => {
     email: { value: "", hasError: false, errorMsg: "" },
     password: { value: "", hasError: false, errorMsg: "" },
     re_password: { value: "", hasError: false, errorMsg: "" },
-    workExp: { value: "", hasError: false, errorMsg: "" },
-    sex: { value: "male" },
+    workExp: { value: "", hasError: false, errorMsg: "" }
   });
 
   const onInputChange = (e) => {
+    const changedProp = e.target.name
     const change = {
-      [e.target.name]: {
+      [changedProp]: {
         value: e.target.value,
+        hasError: inputs[changedProp].hasError,
+        errorMsg: inputs[changedProp].errorMsg,
       },
     };
-
-    if (e.target.name != "sex") {
-      Object.assign(change, {
-        hasError: inputs[e.target.name].hasError,
-        errorMsg: inputs[e.target.name].errorMsg,
-      });
-    }
-
     setInputs((before) => ({ ...before, ...change }));
   };
 
   const onInputBlur = (e) => {
     const inputCur = e.target;
-
-    if (e.target.name == "sex") {
-      return;
-    }
 
     const change = {
       [e.target.name]: {
@@ -87,8 +79,9 @@ export const Register = () => {
       email: inputs.email.value.trim(),
       password: inputs.password.value.trim(),
       workExp: inputs.workExp.value.trim(),
-      sex: inputs.sex.value.trim(),
+      sex: myRef.current?.checked ? "male" : "female"
     };
+    console.log(send);
 
     register(send)
       .then((res) => {
@@ -191,21 +184,18 @@ export const Register = () => {
             <div className={style.radioInputsBox}>
               <label htmlFor="sex-m">male</label>
               <input
-                className={inputs.sex?.hasError && style.errorInput}
+                ref={myRef}
                 type="radio"
                 name="sex"
                 id="sex-m"
-                onBlur={onInputChange}
                 value="male"
-                checked
+                defaultChecked
               />
-              <label htmlFor="sex-m">female</label>
+              <label htmlFor="sex-f">female</label>
               <input
-                className={inputs.sex?.hasError && style.errorInput}
                 type="radio"
                 name="sex"
                 id="sex-f"
-                onBlur={onInputChange}
                 value="female"
               />
             </div>
