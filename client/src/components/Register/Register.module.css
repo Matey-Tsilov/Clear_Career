@@ -112,6 +112,10 @@ border: 1px solid red;
   margin: 0.5em 0 1.5em 0;
 }
 
+input[type="file"]{
+  display: none;
+}
+
 .labelHeading{
   font-size: 1.2em;
   margin: 0 auto;
