@@ -23,9 +23,14 @@ const userSchema = new mongoose.Schema({
   },
   sex: {
     type: String,
-    enum: [["male", "female",], "Sorry, there are only 2 genders."]
+    enum: {
+      values: ["male", "female"],
+      message: "Sorry, there are only 2 genders."
+    }
   }
 });
+
+
 
 userSchema.pre("save", async function (next) {
   const saltRounds = 10;

@@ -18,7 +18,7 @@ import { ModalContextProvider } from "./contexts/modalContext.js";
 
 import "./App.module.css";
 
-import { Login_RegisterGuard } from "./RouteGuards/Login_RegisterGuard.js";
+import { SignUpGuard } from "./RouteGuards/Login_RegisterGuard.js";
 
 function App() {
   return (
@@ -28,7 +28,7 @@ function App() {
           <UserContextProvider>
             <Header />
             <Routes>
-              <Route element={<Login_RegisterGuard />}>
+              <Route element={<SignUpGuard />}>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
               </Route>

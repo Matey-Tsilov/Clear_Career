@@ -2,7 +2,7 @@ import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/userContext";
 import { useContext } from "react";
 
-export const Login_RegisterGuard = () => {
+export const SignUpGuard = () => {
   const {user} = useContext(UserContext);
 
   if (Object.values(user) != 0) {

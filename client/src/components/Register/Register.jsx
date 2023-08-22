@@ -55,10 +55,7 @@ export const Register = () => {
       change[inputCur.name].hasError = true;
       change[inputCur.name].errorMsg =
         "This password is too easy. You need a better one";
-    } else if (
-      (inputCur.name === "re_password" &&
-        inputCur.value !== inputs.password.value) ||
-      inputCur.value === ""
+    } else if (inputCur.name === "re_password" && (inputCur.value !== inputs.password.value && inputCur.value === "")
     ) {
       change[inputCur.name].hasError = true;
       change[inputCur.name].errorMsg = "Passwords mismatch";
@@ -81,7 +78,6 @@ export const Register = () => {
       workExp: inputs.workExp.value.trim(),
       sex: myRef.current?.checked ? "male" : "female"
     };
-    console.log(send);
 
     register(send)
       .then((res) => {
