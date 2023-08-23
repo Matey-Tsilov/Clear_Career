@@ -126,3 +126,17 @@ input[type="file"]{
 .message{
   text-align: center;
 }
+
+label img{
+   width: 4em;
+   height: auto;
+   border-radius: 50%;
+}
+.femaleSection, .maleSection{
+  display: flex;
+  flex-direction: column;
+}
+
+.femaleSection{
+  border-left: 0.2em solid #5c9596;
+}
