@@ -34,7 +34,14 @@ exports.validateToken = async (token) => {
 exports.logout = (token) => blackList.push(token)
 
 async function generateSession(user) {
-    const payload = { _id: user._id, username: user.username, email: user.email };
+    const payload = { 
+      _id: user._id,
+      username: user.username,
+      email: user.email,
+      sex: user.sex,
+      profileImg: user.profileImg,
+      workExp: user.workExp
+    };
     const options = {expiresIn: '2d'}
   
     //use promisified version

@@ -138,6 +138,9 @@ label img{
   display: flex;
   flex-direction: column;
 }
+.femaleSection label:hover, .maleSection label:hover{
+  cursor: pointer;
+}
 
 .femaleSection{
   border-left: 0.2em solid #5c9596;
@@ -156,5 +159,30 @@ label img{
   border: 2px solid transparent;
   box-sizing: border-box;
   border-bottom: 0.5em solid #5c9596;
+}
+
+div.upload_pic{
+  display: flex;
+  margin-bottom: 1em;
+  max-width: 5em;
+}
+.upload_pic_parent {
+  display: flex;
+  justify-content: center;
+}
+
+.upload_pic label{
+  border: 1px solid black;
+  border-radius: 50%;
+  display: block;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  padding: 1em;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.upload_pic label:hover{
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 

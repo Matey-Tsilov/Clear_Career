@@ -1,8 +1,8 @@
 import { useContext, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import man from '../../assets/man.png'
-import woman from '../../assets/woman.png'
+import man from "../../assets/man.png";
+import woman from "../../assets/woman.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
@@ -103,8 +103,13 @@ export const Register = () => {
         <h2>Register</h2>
 
         <form className={style["login-form"]} onSubmit={onRegisterSubmit}>
-          <div className={style.upload_pic}>
-            <input type="file" id="fileUpload" />
+          <div className={style.upload_pic_parent}>
+            <div className={style.upload_pic}>
+              <label htmlFor="fileUpload">
+                Upload profile picture
+                <input type="file" id="fileUpload" name="profileImg"/>
+              </label>
+            </div>
           </div>
           <div>
             {inputs.email.hasError && (
@@ -195,11 +200,15 @@ export const Register = () => {
                   value="male"
                   defaultChecked
                 />
-                <label htmlFor="sex-m"><img src={man} alt="buissnessman" /></label>
+                <label htmlFor="sex-m">
+                  <img src={man} alt="buissnessman" />
+                </label>
               </div>
               <div className={style.femaleSection}>
                 <input type="radio" name="sex" id="sex-f" value="female" />
-                <label htmlFor="sex-f"><img src={woman} alt="buissnessman" /></label>
+                <label htmlFor="sex-f">
+                  <img src={woman} alt="buissnessman" />
+                </label>
               </div>
             </div>
           </div>
