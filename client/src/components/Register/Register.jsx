@@ -25,6 +25,7 @@ export const Register = () => {
     password: { value: "", hasError: false, errorMsg: "" },
     re_password: { value: "", hasError: false, errorMsg: "" },
     workExp: { value: "", hasError: false, errorMsg: "" },
+    profileImg: { value: "", hasError: false, errorMsg: "" },
   });
 
   const onInputChange = (e) => {
@@ -37,6 +38,7 @@ export const Register = () => {
       },
     };
     setInputs((before) => ({ ...before, ...change }));
+    console.log(e.target.value);
   };
   const onInputBlur = (e) => {
     const inputCur = e.target;
@@ -81,6 +83,7 @@ export const Register = () => {
       email: inputs.email.value.trim(),
       password: inputs.password.value.trim(),
       workExp: inputs.workExp.value.trim(),
+      profileImg: inputs.profileImg.value.trim(),
       sex: myRef.current?.checked ? "male" : "female",
     };
 
@@ -107,7 +110,8 @@ export const Register = () => {
             <div className={style.upload_pic}>
               <label htmlFor="fileUpload">
                 Upload profile picture
-                <input type="file" id="fileUpload" name="profileImg"/>
+                {/* <img src={inputs.profileImg.value} alt="picture" /> */}
+                <input type="file" id="fileUpload" name="profileImg" onChange={onInputChange}/>
               </label>
             </div>
           </div>

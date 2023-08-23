@@ -13,7 +13,7 @@ export const Notification = ({message}) => {
 
     return (
     <div className={style.notification}>
-            {message.split('\n').map(m => <p>{m}</p>)}
+            {message.split('\n').map(m => <p key={Math.random(999)}>{m}</p>)}
     </div> 
     )
 }
