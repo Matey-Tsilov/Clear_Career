@@ -37,10 +37,7 @@ async function generateSession(user) {
     const payload = { 
       _id: user._id,
       username: user.username,
-      email: user.email,
-      sex: user.sex,
-      profileImg: user.profileImg,
-      workExp: user.workExp
+      email: user.email
     };
     const options = {expiresIn: '2d'}
   
@@ -48,9 +45,11 @@ async function generateSession(user) {
     const token = await jwt.sign(payload, SECRET, options)
   
   return {
-    email: user.email, 
     _id: user._id,
+    email: user.email, 
     workExp: user.workExp,
+    sex: user.sex,
+    profileImg: user.profileImg,
     accessToken: token
   }
 } 
