@@ -187,7 +187,6 @@ export const Register = () => {
 
             <div className={style.radioInputsBox}>
               <div className={style.maleSection}>
-                <label htmlFor="sex-m"><img src={man} alt="buissnessman" /></label>
                 <input
                   ref={myRef}
                   type="radio"
@@ -196,10 +195,11 @@ export const Register = () => {
                   value="male"
                   defaultChecked
                 />
+                <label htmlFor="sex-m"><img src={man} alt="buissnessman" /></label>
               </div>
               <div className={style.femaleSection}>
-                <label htmlFor="sex-f"><img src={woman} alt="buissnessman" /></label>
                 <input type="radio" name="sex" id="sex-f" value="female" />
+                <label htmlFor="sex-f"><img src={woman} alt="buissnessman" /></label>
               </div>
             </div>
           </div>

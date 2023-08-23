@@ -27,6 +27,10 @@ const userSchema = new mongoose.Schema({
       values: ["male", "female"],
       message: "Sorry, there are only 2 genders."
     }
+  },
+  profileImg: {
+    type: String,
+    required: [true, "The profile picture is required"]
   }
 });
 
