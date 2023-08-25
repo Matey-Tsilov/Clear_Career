@@ -132,7 +132,7 @@ input[type="file"]{
 label img{
    width: 4em;
    height: auto;
-   border-radius: 50%;
+   border-radius: 60%;
 }
 .femaleSection, .maleSection{
   display: flex;
@@ -164,21 +164,16 @@ label img{
 div.upload_pic{
   display: flex;
   margin-bottom: 1em;
-  max-width: 5em;
-}
-.upload_pic_parent {
-  display: flex;
-  justify-content: center;
+  height: 8rem;
 }
 
 .upload_pic label{
   border: 1px solid black;
   border-radius: 50%;
+  height: auto;
+  width: 8rem;
   display: block;
   text-align: center;
-  display: flex;
-  align-items: center;
-  padding: 1em;
   background-color: rgba(0, 0, 0, 0.1);
 }
 .upload_pic label:hover{

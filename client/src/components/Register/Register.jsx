@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import man from "../../assets/man.png";
 import woman from "../../assets/woman.png";
+import anonym from "../../assets/anonym.jpg"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
@@ -25,10 +26,9 @@ export const Register = () => {
     password: { value: "", hasError: false, errorMsg: "" },
     re_password: { value: "", hasError: false, errorMsg: "" },
     workExp: { value: "", hasError: false, errorMsg: "" },
-    profileImg: { value: "", hasError: false, errorMsg: "" },
+    profileImg: anonym,
   });
-
-  const onInputChange = (e) => {
+  const onInputChange = async (e) => {
     const changedProp = e.target.name;
     const change = {
       [changedProp]: {
@@ -37,8 +37,16 @@ export const Register = () => {
         errorMsg: inputs[changedProp].errorMsg,
       },
     };
+    //if we uploaded a photo the case is more specific
+    if (changedProp == "profileImg") {
+      setInputs((old) => ({
+        ...old,
+        ...{ [e.target.name]: URL.createObjectURL(e.target.files[0]) },
+      }));
+      return;
+    }
+
     setInputs((before) => ({ ...before, ...change }));
-    console.log(e.target.value);
   };
   const onInputBlur = (e) => {
     const inputCur = e.target;
@@ -83,7 +91,7 @@ export const Register = () => {
       email: inputs.email.value.trim(),
       password: inputs.password.value.trim(),
       workExp: inputs.workExp.value.trim(),
-      profileImg: inputs.profileImg.value.trim(),
+      profileImg: inputs.profileImg.trim(),
       sex: myRef.current?.checked ? "male" : "female",
     };
 
@@ -106,14 +114,21 @@ export const Register = () => {
         <h2>Register</h2>
 
         <form className={style["login-form"]} onSubmit={onRegisterSubmit}>
-          <div className={style.upload_pic_parent}>
-            <div className={style.upload_pic}>
-              <label htmlFor="fileUpload">
-                Upload profile picture
-                {/* <img src={inputs.profileImg.value} alt="picture" /> */}
-                <input type="file" id="fileUpload" name="profileImg" onChange={onInputChange}/>
-              </label>
-            </div>
+          <div className={style.upload_pic}>
+            <label htmlFor="fileUpload">
+              <img
+                className={style.uploadedPic}
+                src={inputs.profileImg}
+                alt="profilePic"
+              />
+              <input
+                accept="image/*"
+                type="file"
+                id="fileUpload"
+                name="profileImg"
+                onChange={onInputChange}
+              />
+            </label>
           </div>
           <div>
             {inputs.email.hasError && (
@@ -184,7 +199,7 @@ export const Register = () => {
               type="number"
               name="workExp"
               id="workExp"
-              placeholder="Type workExp here:"
+              placeholder="What is your work experience?"
               onChange={onInputChange}
               onBlur={onInputBlur}
               value={inputs.workExp.value}
