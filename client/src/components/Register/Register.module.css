@@ -129,7 +129,7 @@ input[type="file"]{
   text-align: center;
 }
 
-label img{
+.radioInputsBox label img{
    width: 4em;
    height: auto;
    border-radius: 60%;
@@ -165,19 +165,33 @@ div.upload_pic{
   display: flex;
   margin-bottom: 1em;
   height: 8rem;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 .upload_pic label{
-  border: 1px solid black;
   border-radius: 50%;
+  box-sizing: inherit;
   height: auto;
   width: 8rem;
-  display: block;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.1);
+
 }
 .upload_pic label:hover{
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+.uploadedPic{
+  height: 8rem;
+  width: 100%;
+  border-radius: 50%;
+  border: 1px solid black;
+  box-sizing: inherit;
+}
+.upload_pic img:hover{
+  border: 2px;
+  border-color: #5c9596;
 }
 
