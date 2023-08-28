@@ -31,6 +31,7 @@ export const Header = () => {
             <Link onClick={() => setUser()} to="/dashboard">
               Logout
             </Link>
+            <img src={user.profileImg} alt="profile-pic" />
           </div>
         ) : (
           <>

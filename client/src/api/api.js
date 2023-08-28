@@ -68,7 +68,9 @@ async function login(data) {
         password: serverRes.password,
         token: serverRes.accessToken,
         id: serverRes._id,
-        workExp: serverRes.workExp
+        workExp: serverRes.workExp,
+        sex: serverRes.sex,
+        profileImg: serverRes.profileImg
     }
     
     return userData
@@ -84,7 +86,9 @@ async function register(data) {
         password: serverRes.password,
         token: serverRes.accessToken,
         id: serverRes._id,
-        workExp: serverRes.workExp
+        workExp: serverRes.workExp,
+        sex: serverRes.sex,
+        profileImg: serverRes.profileImg
     }
 
     return userData

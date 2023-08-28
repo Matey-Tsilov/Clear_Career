@@ -96,6 +96,8 @@ export const Register = () => {
       sex: myRef.current?.checked ? "male" : "female",
     };
 
+    console.log(send);
+
     register(send)
       .then((res) => {
         setUser(res);
