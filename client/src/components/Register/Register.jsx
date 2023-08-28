@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 
 import { register } from "../../services/userService";
+
 import style from "./Register.module.css";
 import { UserContext } from "../../contexts/userContext";
 import { NotifyContext } from "../../contexts/notificationContext";
