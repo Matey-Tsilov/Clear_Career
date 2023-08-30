@@ -43,12 +43,17 @@ nav a {
 
 nav > img{
   height: auto;
-  max-width: 10%;
+  width: 10%;
   aspect-ratio: 1/1;
   border-radius: 50%;
 }
 
 nav a:hover{
   background-color: #5c9596;
-  animation-duration: .50s ease;
+  animation: .50s ease;
+}
+
+nav > img:hover{
+  cursor: pointer;
+  border: 3px solid teal;  
 }

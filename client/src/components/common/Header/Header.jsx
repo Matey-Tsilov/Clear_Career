@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import style from "./Header.module.css";
 import logo from "../../../assets/logo.jpg";
@@ -11,6 +11,8 @@ import { NotifyContext } from "../../../contexts/notificationContext";
 export const Header = () => {
   const { user, setUser } = useContext(UserContext);
   const { notify } = useContext(NotifyContext);
+
+  const navigate = useNavigate()
 
   return (
     <header>
@@ -26,7 +28,7 @@ export const Header = () => {
             <Link onClick={() => setUser()} to="/dashboard">
               Logout
             </Link>
-            <img src={user.profileImg} alt="profile-pic" />
+            <img src={user.profileImg} alt="profile-pic" onClick={() => navigate(`/profile/${user.id}`)}/>
           </>
         ) : (
           <>
