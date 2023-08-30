@@ -19,20 +19,15 @@ export const Header = () => {
         <img id="logo-img" src={logo} alt="" />
       </Link>
       <nav>
-        <div className="guest-specific">
-          <Link to="/profile">
-            Welcome, <span>{user.email || "Guest"}</span>
-          </Link>
-          <Link to="/dashboard">Dashboard</Link>
-        </div>
+        <Link to="/dashboard">Dashboard</Link>
         {Object.values(user) != 0 ? (
-          <div className={style.user}>
+          <>
             <Link to="/create">Create Offer</Link>
             <Link onClick={() => setUser()} to="/dashboard">
               Logout
             </Link>
             <img src={user.profileImg} alt="profile-pic" />
-          </div>
+          </>
         ) : (
           <>
             <Link to="/register">Register</Link>
