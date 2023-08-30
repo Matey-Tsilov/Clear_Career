@@ -99,12 +99,17 @@ async function logout() {
     await get('/users/logout')
     clearUserData()
 }
+
+async function getUserById(id){
+ return await get(`/users/${id}`);
+}
 //#endregion
 
 export {
     login,
     logout,
     register,
+    getUserById,
     get,
     post,
     put,

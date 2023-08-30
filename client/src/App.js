@@ -37,7 +37,7 @@ function App() {
               <Route path="/create" element={<Create />} />
               <Route path="/edit/:id" element={<Edit />} />
               <Route path="/details/:id" element={<Details />} />
-              <Route path="/users/:id" element={<Profile />} />
+              <Route path="/profile/:id" element={<Profile />} />
             </Routes>
             <Footer />
           </UserContextProvider>

@@ -1,3 +1,3 @@
-import { register, login, logout } from "../api/api";
+import { register, login, logout, getUserById } from "../api/api";
 
-export {register, login, logout}
+export {register, login, logout, getUserById}
