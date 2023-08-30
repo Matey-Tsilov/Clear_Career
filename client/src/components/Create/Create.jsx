@@ -41,7 +41,6 @@ export const Create = () => {
     }
   };
 
-
   const onInputValidation = (e) => {
 
     const input = e.target
