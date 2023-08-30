@@ -3,8 +3,8 @@
     max-height: 30em;
     display: block;
     position: absolute;
-    top: 110%;
-    right: 0.5%;
+    top: 30%;
+    right: 10%;
     border-radius: 2em;
     transition: opacity 5s;
 }
