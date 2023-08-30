@@ -28,4 +28,14 @@ router.get('/logout', (req, res) => {
     userService.logout(req.user.token)
     res.status(204).end()
 })
+router.get("/:id", async (req, res) => {
+  try {
+    const user = await userService.findUser(req.params.id)
+    res.json(user)
+  } catch (error) {
+    const errorMsg = mongooseErrorMapper(error);
+    res.status(404).json({ message: errorMsg });
+  }
+
+})
 module.exports = router;

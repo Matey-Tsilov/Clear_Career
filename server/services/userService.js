@@ -5,10 +5,11 @@ const { SECRET } = require("../constants");
 
 const blackList = []
 
+exports.findUser = async (id) => await User.findById(id);
+
 exports.register = async (userData) => {
   const registeredUser = await User.create(userData)
-  console.log(registeredUser);
-  //use registeredUser not userData to extract the _id proerty!
+
   return await generateSession(registeredUser)
 }
 exports.login = async (email, password) => {
