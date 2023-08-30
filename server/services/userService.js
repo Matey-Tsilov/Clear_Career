@@ -7,6 +7,8 @@ const blackList = []
 
 exports.findUser = async (id) => await User.findById(id);
 
+exports.findAndUpdateUser = async (id, updatedUser) => await User.findByIdAndUpdate(id, updatedUser)
+
 exports.register = async (userData) => {
   const registeredUser = await User.create(userData)
 

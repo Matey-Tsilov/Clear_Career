@@ -31,7 +31,11 @@ const userSchema = new mongoose.Schema({
   profileImg: {
     type: String,
     required: [true, "The profile picture is required"]
-  }
+  },
+  userPosts: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Offer'
+  }]
 });
 
 

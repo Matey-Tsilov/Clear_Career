@@ -1,6 +1,9 @@
 const router = require('express').Router()
-const { isUser, isOwner } = require('../middlewares/guards')
+ const { isUser, isOwner } = require('../middlewares/guards')
+
 const collectionService = require('../services/collectionService')
+const userService = require('../services/userService')
+
 const mongooseErrorMapper = require('../utils/mongooseErrorMapper')
 
 router.get('/', async (req, res) => {
@@ -13,9 +16,16 @@ router.get('/', async (req, res) => {
     }
 })
 router.post('/', isUser(), async (req, res) => {
+    const id = req.user._id;
     const body = req.body
-    body._ownerId = req.user._id
+    body._ownerId = id
+
     try {
+        
+        const user = userService.findUser(id)
+        user.posts.push(body._id)
+        await userService.findAndUpdateUser(id, user)
+
         const createdItem = await collectionService.create(body)
         res.status(201).json(createdItem)
     } catch (error) {
