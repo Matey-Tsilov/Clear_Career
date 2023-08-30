@@ -21,12 +21,12 @@ router.post('/', isUser(), async (req, res) => {
     body._ownerId = id
 
     try {
-        
-        const user = userService.findUser(id)
-        user.posts.push(body._id)
+        const createdItem = await collectionService.create(body)
+
+        const user = await userService.findUser(id)
+        user.userPosts.push(createdItem._id)
         await userService.findAndUpdateUser(id, user)
 
-        const createdItem = await collectionService.create(body)
         res.status(201).json(createdItem)
     } catch (error) {
         const errorMsg = mongooseErrorMapper(error)

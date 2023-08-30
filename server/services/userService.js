@@ -5,7 +5,7 @@ const { SECRET } = require("../constants");
 
 const blackList = []
 
-exports.findUser = async (id) => await User.findById(id);
+exports.findUser = async (id) => await User.findById(id).populate("userPosts");
 
 exports.findAndUpdateUser = async (id, updatedUser) => await User.findByIdAndUpdate(id, updatedUser)
 

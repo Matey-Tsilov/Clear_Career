@@ -30,7 +30,9 @@ router.get('/logout', (req, res) => {
 })
 router.get("/:id", async (req, res) => {
   try {
+    console.log(req.params.id);
     const user = await userService.findUser(req.params.id)
+
     res.json(user)
   } catch (error) {
     const errorMsg = mongooseErrorMapper(error);
