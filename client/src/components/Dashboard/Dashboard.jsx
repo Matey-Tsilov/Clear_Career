@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import * as offerService from "../../services/offerService";
 import { Offer } from "./Offer";
 
-export const Dashboard = () => {
+const Dashboard = () => {
   const [offers, setOffers] = useState([]);
 
   useEffect(() => {
@@ -24,3 +24,5 @@ export const Dashboard = () => {
     </section>
   );
 };
+
+export default Dashboard
