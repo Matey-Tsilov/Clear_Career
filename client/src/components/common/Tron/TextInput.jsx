@@ -10,7 +10,7 @@ export const TextInput = ({ attributes, errorPredicateFunc, errorMsg }) => {
 
   const onBlur = (e) => {
     if (errorPredicateFunc != null && errorPredicateFunc(inValue)) {
-        setErrorObj({hasError: true, errorMsg: errorObj.errorMsg})  
+        setErrorObj({hasError: true, errorMsg})  
     }else {
         setErrorObj({hasError: false, errorMsg: ''})
     }
